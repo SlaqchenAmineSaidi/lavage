@@ -90,7 +90,7 @@ class _SignupScreenState extends State<Signup> {
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: TextFormField(
-                          controller: _firstNameController,
+                          controller: _nameController,
                           validator: (value) => value.isEmpty
                               ? 'please enter the first name'
                               : null,
@@ -182,10 +182,8 @@ class _SignupScreenState extends State<Signup> {
                           onPressed: () {
                             Map creds = {
                               'name': _nameController.text,
-                              'firstname': _firstNameController.text,
                               'email': _emailController.text,
                               'password': _passwordController.text,
-                              'phonenumber': _numberController.text,
                               'device_name': 'mobile',
                             };
                             if (_formKey.currentState.validate()) {
