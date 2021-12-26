@@ -47,7 +47,7 @@ class _SignupScreenState extends State<Signup> {
               Column(
                 children: [
                   Image.asset(
-                    'log.jpg',
+                    'images/login.jpg',
                     fit: BoxFit.cover,
                   ),
                 ],
