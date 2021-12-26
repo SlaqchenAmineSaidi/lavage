@@ -20,11 +20,9 @@ class _SignupScreenState extends State<Signup> {
 
   @override
   void initState() {
-    _firstNameController.text = '';
     _nameController.text = '';
     _emailController.text = '';
     _passwordController.text = '';
-    _numberController.text = '';
     super.initState();
   }
 
@@ -99,38 +97,9 @@ class _SignupScreenState extends State<Signup> {
                           keyboardType: TextInputType.name,
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
-                            labelText: 'First Name',
-                            prefixIcon: Icon(
-                              Icons.account_circle,
-                            ),
-                            fillColor: Colors.transparent,
-                            errorStyle: TextStyle(
-                              fontSize: 15,
-
-                              //backgroundColor: Colors.transparent,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15.0,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: TextFormField(
-                          controller: _nameController,
-                          validator: (value) =>
-                              value.isEmpty ? 'please enter a name' : null,
-                          keyboardType: TextInputType.name,
-                          textInputAction: TextInputAction.next,
-                          decoration: InputDecoration(
                             labelText: 'Name',
                             prefixIcon: Icon(
-                              Icons.account_box,
+                              Icons.account_circle,
                             ),
                             fillColor: Colors.transparent,
                             errorStyle: TextStyle(
@@ -192,36 +161,6 @@ class _SignupScreenState extends State<Signup> {
                             ),
                             suffixIcon: Icon(
                               Icons.remove_red_eye,
-                            ),
-                            fillColor: Colors.transparent,
-                            errorStyle: TextStyle(
-                              fontSize: 15,
-
-                              //backgroundColor: Colors.transparent,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: TextFormField(
-                          controller: _numberController,
-                          validator: (value) => value.isEmpty
-                              ? 'please enter valid number'
-                              : null,
-                          keyboardType: TextInputType.emailAddress,
-                          textInputAction: TextInputAction.next,
-                          decoration: InputDecoration(
-                            labelText: 'Phone number',
-                            prefixIcon: Icon(
-                              Icons.phone,
                             ),
                             fillColor: Colors.transparent,
                             errorStyle: TextStyle(
