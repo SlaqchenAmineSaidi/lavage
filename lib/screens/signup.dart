@@ -188,7 +188,7 @@ class _SignupScreenState extends State<Signup> {
                             };
                             if (_formKey.currentState.validate()) {
                               Provider.of<Auth>(context, listen: false)
-                                  .login(creds: creds);
+                                  .store(creds: creds);
                               Navigator.pop(context);
                             }
                           },
