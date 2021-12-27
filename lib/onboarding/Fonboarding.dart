@@ -17,19 +17,22 @@ class _OnBoardingState extends State<OnBoarding> {
         pages: [
           PageViewModel(
             title: 'Deep Cleaning',
-            body: 'To Be As Clean As A Hound’s Tooth ',
+            body:
+                'To Be As Clean As A Hound’s Tooth. As promised, we are going to do a good job ',
             image: buildImage('images/l.jpg'),
             decoration: getPageDecoration(),
           ),
           PageViewModel(
             title: 'Good Service',
-            body: 'Feel Full Of The Joys Of Spring',
+            body:
+                'Feel Full Of The Joys Of Spring. Don\'t even hesitate, just try first',
             image: buildImage('images/logii.jpg'),
             decoration: getPageDecoration(),
           ),
           PageViewModel(
             title: 'Fast Work',
-            body: 'As Quick As a Flash, As Quick As Lightning',
+            body:
+                'As Quick As a Flash, As Quick As Lightning. We try to offer the fast deep cleaning, just trust us ',
             image: buildImage('images/lll.png'),
             decoration: getPageDecoration(),
             footer: ButtonWidget(
@@ -51,9 +54,9 @@ class _OnBoardingState extends State<OnBoarding> {
         nextFlex: 0,
       ));
   Widget buildImage(String path) => Center(
-        child: Image.asset(
-          path,
-          width: 350,
+        child: CircleAvatar(
+          backgroundImage: AssetImage(path),
+          radius: 200,
         ),
       );
   PageDecoration getPageDecoration() => PageDecoration(
