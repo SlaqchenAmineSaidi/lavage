@@ -41,16 +41,25 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                backgroundImage: AssetImage('images/im_log.jpg'),
-                radius: 65.0,
-              ),
+              Material(
+                  child: InkWell(
+                onTap: () {},
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('images/im_log.jpg'),
+                  radius: 65.0,
+                ),
+              )),
               SizedBox(
                 width: 70.0,
               ),
-              CircleAvatar(
-                backgroundImage: AssetImage('images/im_login.png'),
-                radius: 65.0,
+              Material(
+                child: InkWell(
+                  onTap: () {},
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('images/im_login.png'),
+                    radius: 65.0,
+                  ),
+                ),
               ),
             ],
           ),
@@ -74,9 +83,14 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 width: 140,
               ),
-              CircleAvatar(
-                backgroundImage: AssetImage('images/histo.jpg'),
-                radius: 65.0,
+              Material(
+                child: InkWell(
+                  onTap: () {},
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('images/histo.jpg'),
+                    radius: 65.0,
+                  ),
+                ),
               ),
             ],
           ),
