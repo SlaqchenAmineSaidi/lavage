@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/Book_services.dart';
 import 'package:flutter_laravel/screens/login_screen.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -43,7 +44,10 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Material(
                   child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BookService()));
+                },
                 child: CircleAvatar(
                   backgroundImage: AssetImage('images/im_log.jpg'),
                   radius: 65.0,
