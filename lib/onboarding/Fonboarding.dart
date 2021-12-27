@@ -19,14 +19,14 @@ class _OnBoardingState extends State<OnBoarding> {
             title: 'Deep Cleaning',
             body:
                 'To Be As Clean As A Hound’s Tooth. As promised, we are going to do a good job ',
-            image: buildImage('images/l.jpg'),
+            image: buildImage('images/logii.jpg'),
             decoration: getPageDecoration(),
           ),
           PageViewModel(
             title: 'Good Service',
             body:
                 'Feel Full Of The Joys Of Spring. Don\'t even hesitate, just try first',
-            image: buildImage('images/logii.jpg'),
+            image: buildImage('images/lo.jpg'),
             decoration: getPageDecoration(),
           ),
           PageViewModel(
