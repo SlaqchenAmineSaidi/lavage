@@ -31,48 +31,61 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('Washing Car'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          SizedBox(
+            height: 100.0,
+          ),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Stack(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: AssetImage('images/im_log.jpg'),
-                    radius: 30.0,
-                  ),
-                  Text(
-                    'Book',
-                  ),
-                ],
+              CircleAvatar(
+                backgroundImage: AssetImage('images/im_log.jpg'),
+                radius: 65.0,
               ),
               SizedBox(
-                height: 30.0,
+                width: 70.0,
               ),
-              Stack(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: AssetImage('images/im_login'),
-                    radius: 30.0,
-                  ),
-                  Text(
-                    'Book',
-                  ),
-                ],
+              CircleAvatar(
+                backgroundImage: AssetImage('images/im_login.png'),
+                radius: 65.0,
               ),
+            ],
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 60,
+              ),
+              Text('Book Services'),
+              SizedBox(
+                width: 120,
+              ),
+              Text('My Account'),
             ],
           ),
           SizedBox(
-            height: 3.0,
+            height: 15.0,
           ),
           Row(
             children: [
-              Text('Services'),
               SizedBox(
-                height: 30,
+                width: 140,
               ),
-              Text('Account'),
+              CircleAvatar(
+                backgroundImage: AssetImage('images/histo.jpg'),
+                radius: 65.0,
+              ),
             ],
-          )
+          ),
+          Row(children: [
+            SizedBox(
+              width: 160,
+            ),
+            Text('Book Services'),
+          ]),
         ],
       ),
       drawer: Drawer(child: Consumer<Auth>(builder: (context, auth, child) {

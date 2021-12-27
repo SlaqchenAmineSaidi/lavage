@@ -16,8 +16,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    _emailController.text = 'amine@gmail.com';
-    _passwordController.text = 'password';
+    _emailController.text = '';
+    _passwordController.text = '';
     super.initState();
   }
 
@@ -83,8 +83,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         child: TextFormField(
                           controller: _emailController,
-                          validator: (value) =>
-                              value.isEmpty ? 'please enter valid email' : null,
+                          validator: (String value) {
+                            String pattern =
+                                r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                            RegExp regExp = new RegExp(pattern);
+                            if (value.isEmpty) {
+                              return 'Email is required';
+                            } else if (!regExp.hasMatch(value)) {
+                              return 'Invalid email';
+                            } else {
+                              return null;
+                            }
+                          },
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
@@ -97,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               fontSize: 15,
 
                               //backgroundColor: Colors.transparent,
-                              color: Colors.white,
+                              color: Colors.red,
                             ),
                           ),
                         ),
@@ -127,9 +137,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             fillColor: Colors.transparent,
                             errorStyle: TextStyle(
                               fontSize: 15,
-
                               //backgroundColor: Colors.transparent,
-                              color: Colors.white,
+                              color: Colors.red,
                             ),
                           ),
                         ),

@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Washing cars',
       home: OnBoarding(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
