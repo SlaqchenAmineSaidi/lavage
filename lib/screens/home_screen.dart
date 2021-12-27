@@ -28,10 +28,52 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter Laravel Auth'),
+        title: Text('Washing Car'),
       ),
-      body: Center(
-        child: Text('Home Sceen'),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Stack(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: AssetImage('images/im_log.jpg'),
+                    radius: 30.0,
+                  ),
+                  Text(
+                    'Book',
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              Stack(
+                children: [
+                  CircleAvatar(
+                    backgroundImage: AssetImage('images/im_login'),
+                    radius: 30.0,
+                  ),
+                  Text(
+                    'Book',
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 3.0,
+          ),
+          Row(
+            children: [
+              Text('Services'),
+              SizedBox(
+                height: 30,
+              ),
+              Text('Account'),
+            ],
+          )
+        ],
       ),
       drawer: Drawer(child: Consumer<Auth>(builder: (context, auth, child) {
         if (!auth.authenticated) {
