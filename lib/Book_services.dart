@@ -38,7 +38,11 @@ class _BookServiceState extends State<BookService> {
         child: Column(
           children: [
             Text('Choose the gender',
-                style: TextStyle(color: Colors.cyan[200], fontSize: 20.0)),
+                style: TextStyle(
+                  color: Colors.cyan[200],
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                )),
             Padding(
               padding: const EdgeInsets.only(top: 8.0, right: 15.0, left: 15.0),
               child: SingleChildScrollView(
@@ -82,27 +86,16 @@ class _BookServiceState extends State<BookService> {
                     });
                   },
                   isSelected: isSelected,
+                  color: Colors.green,
                 ),
               ),
             ),
-            // ToggleButtons(children: [
-            //   Text(
-            //     'Car',
-            //     style: TextStyle(color: Colors.cyan[200], fontSize: 20.0),
-            //   ),
-            //   Text(
-            //     'Motor',
-            //     style: TextStyle(color: Colors.cyan[200], fontSize: 20.0),
-            //   ),
-            //   Text(
-            //     'Bus',
-            //     style: TextStyle(color: Colors.cyan[200], fontSize: 20.0),
-            //   ),
-            //   Text(
-            //     'Electric_rickshaw',
-            //     style: TextStyle(color: Colors.cyan[200], fontSize: 20.0),
-            //   ),
-            // ], isSelected: isSelected),
+            Text('Select Date & Time',
+                style: TextStyle(
+                  color: Colors.cyan[200],
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                )),
             TableCalendar(
               firstDay: DateTime.now(),
               lastDay: DateTime.utc(2023, 10, 16),
