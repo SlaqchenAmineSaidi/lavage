@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Login'),
-          backgroundColor: Colors.grey[900],
+          backgroundColor: Colors.black87,
         ),
         body: Stack(
           children: [
@@ -53,18 +53,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: 50.0,
+                          height: 120.0,
                         ),
                         Text(
                           'LOGIN',
                           style: TextStyle(
                             fontSize: 50,
                             fontWeight: FontWeight.bold,
-                            color: Colors.cyanAccent,
+                            color: Colors.black,
                           ),
                         ),
                         SizedBox(
-                          height: 40.0,
+                          height: 80.0,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -103,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 15.0,
+                          height: 20.0,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -134,12 +134,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 30,
                         ),
                         Container(
                           width: double.infinity,
-                          color: Colors.blue,
+                          color: Colors.red,
                           child: MaterialButton(
+                            //color: Colors.transparent,
                             onPressed: () {
                               Map creds = {
                                 'email': _emailController.text,
@@ -161,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 10.0,
+                          height: 20.0,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -177,7 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: Text(
                                 'Register Now',
                                 style: TextStyle(
-                                    color: Colors.cyanAccent,
+                                    color: Colors.indigoAccent[100],
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0),
                               ),

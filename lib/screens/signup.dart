@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, prefer_final_fields, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/screens/login_screen.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:provider/provider.dart';
 
@@ -59,14 +60,14 @@ class _SignupScreenState extends State<Signup> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 50.0,
+                        height: 90.0,
                       ),
                       Text(
                         'Sign up',
                         style: TextStyle(
                           fontSize: 50,
                           fontWeight: FontWeight.bold,
-                          color: Colors.cyanAccent,
+                          color: Colors.black,
                         ),
                       ),
                       SizedBox(
@@ -175,7 +176,7 @@ class _SignupScreenState extends State<Signup> {
                       ),
                       Container(
                         width: double.infinity,
-                        color: Colors.blue,
+                        color: Colors.red,
                         child: MaterialButton(
                           onPressed: () {
                             Map creds = {
@@ -197,6 +198,36 @@ class _SignupScreenState extends State<Signup> {
                             ),
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Do you have an account?',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0),
+                          ),
+                          TextButton(
+                            child: Text(
+                              'Sign in',
+                              style: TextStyle(
+                                  color: Colors.indigoAccent[100],
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginScreen()));
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),

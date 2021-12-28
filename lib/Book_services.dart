@@ -22,7 +22,7 @@ class _BookServiceState extends State<BookService> {
     primary: Colors.black87,
     minimumSize: Size(110, 50),
     padding: EdgeInsets.symmetric(horizontal: 16.0),
-    backgroundColor: Colors.indigo[400],
+    backgroundColor: Colors.indigoAccent,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(6.0)),
     ),
@@ -332,7 +332,11 @@ class _BookServiceState extends State<BookService> {
                               MaterialPageRoute(
                                   builder: (context) => Wash_services()));
                         },
-                        child: Text('Next'),
+                        child: Text(
+                          'Next',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
                       ),
                     ),
                   )

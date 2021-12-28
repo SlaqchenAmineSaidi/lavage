@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/screens/login_screen.dart';
 
 class Wash_services extends StatefulWidget {
   const Wash_services({Key key}) : super(key: key);
@@ -16,7 +17,7 @@ class _Wash_servicesState extends State<Wash_services> {
     primary: Colors.black87,
     minimumSize: Size(110, 50),
     padding: EdgeInsets.symmetric(horizontal: 16.0),
-    backgroundColor: Colors.red[400],
+    backgroundColor: Colors.indigoAccent,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(6.0)),
     ),
@@ -54,7 +55,7 @@ class _Wash_servicesState extends State<Wash_services> {
                             ),
                             padding: const EdgeInsets.all(15.0),
                             child: CircleAvatar(
-                              backgroundColor: Colors.red[700],
+                              backgroundColor: Colors.blue,
                               radius: 40,
                               child: Icon(
                                 Icons.directions_car_filled_rounded,
@@ -106,7 +107,7 @@ class _Wash_servicesState extends State<Wash_services> {
                             ),
                             padding: const EdgeInsets.all(15.0),
                             child: CircleAvatar(
-                              backgroundColor: Colors.red[700],
+                              backgroundColor: Colors.blue,
                               radius: 40,
                               child: Icon(
                                 Icons.airline_seat_recline_normal_rounded,
@@ -162,7 +163,7 @@ class _Wash_servicesState extends State<Wash_services> {
                             ),
                             padding: const EdgeInsets.all(15.0),
                             child: CircleAvatar(
-                              backgroundColor: Colors.red[700],
+                              backgroundColor: Colors.blue,
                               radius: 40,
                               child: Icon(
                                 Icons.lightbulb,
@@ -214,7 +215,7 @@ class _Wash_servicesState extends State<Wash_services> {
                             ),
                             padding: const EdgeInsets.all(15.0),
                             child: CircleAvatar(
-                              backgroundColor: Colors.red[700],
+                              backgroundColor: Colors.blue,
                               radius: 40,
                               child: Icon(
                                 Icons.settings_suggest,
@@ -254,17 +255,18 @@ class _Wash_servicesState extends State<Wash_services> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(25.0),
+              padding: const EdgeInsets.all(15.0),
               child: Container(
                 child: TextButton(
                   style: flatButtonStyle,
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Wash_services()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
                   },
-                  child: Text('Next'),
+                  child: Text(
+                    'Book',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
                 ),
               ),
             )
