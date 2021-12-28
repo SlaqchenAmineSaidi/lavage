@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[50],
       appBar: AppBar(
         title: Text('Washing Car'),
       ),
@@ -42,17 +43,19 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Material(
-                  child: InkWell(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BookService()));
-                },
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('images/im_log.jpg'),
-                  radius: 65.0,
-                ),
-              )),
+              Container(
+                child: Material(
+                    child: InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => BookService()));
+                  },
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('images/im_log.jpg'),
+                    radius: 65.0,
+                  ),
+                )),
+              ),
               SizedBox(
                 width: 70.0,
               ),
@@ -72,11 +75,17 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 width: 60,
               ),
-              Text('Book Services'),
+              Text(
+                'Book Services',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               SizedBox(
                 width: 120,
               ),
-              Text('My Account'),
+              Text(
+                'My Account',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ],
           ),
           SizedBox(
@@ -102,7 +111,10 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               width: 160,
             ),
-            Text('Book Services'),
+            Text(
+              'Book Services',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ]),
         ],
       ),
