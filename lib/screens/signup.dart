@@ -38,30 +38,18 @@ class _SignupScreenState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Column(
-                children: [
-                  Image.asset(
-                    'images/login.jpg',
-                    fit: BoxFit.cover,
-                  ),
-                ],
-                crossAxisAlignment: CrossAxisAlignment.center,
-              ),
-            ],
-          ),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Signing up'),
+          backgroundColor: Colors.grey[900],
         ),
-        Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            title: Text('Signing in'),
+        body: Stack(children: [
+          Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('images/login.jpg'), fit: BoxFit.cover)),
           ),
-          body: Padding(
+          Padding(
             padding: const EdgeInsets.all(30.0),
             child: Form(
               key: _formKey,
@@ -216,8 +204,6 @@ class _SignupScreenState extends State<Signup> {
               ),
             ),
           ),
-        ),
-      ],
-    );
+        ]));
   }
 }

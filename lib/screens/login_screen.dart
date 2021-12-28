@@ -55,35 +55,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(
                           height: 50.0,
                         ),
-                        Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 120.0),
-                              padding: EdgeInsets.all(10),
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                  color: Colors.lightBlue,
-                                  border: Border.all(
-                                      color: Colors.blue, // Set border color
-                                      width: 3.0), // Set border width
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                          10.0)), // Set rounded corner radius
-                                  boxShadow: [
-                                    BoxShadow(
-                                        blurRadius: 10,
-                                        color: Colors.black,
-                                        offset: Offset(1, 3))
-                                  ] // Make rounded corner of border
-                                  ),
-                              child: Text(
-                                "Login",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            )),
+                        Text(
+                          'LOGIN',
+                          style: TextStyle(
+                            fontSize: 50,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.cyanAccent,
+                          ),
+                        ),
                         SizedBox(
                           height: 40.0,
                         ),
