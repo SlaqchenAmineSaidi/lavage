@@ -13,6 +13,13 @@ class _BookServiceState extends State<BookService> {
   CalendarFormat _calendarFormat = CalendarFormat.week;
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay;
+  List<bool> isSelected;
+
+  @override
+  void initState() {
+    isSelected = [false, false, false, false];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,90 +30,72 @@ class _BookServiceState extends State<BookService> {
       ),
       body: Column(
         children: [
+          Text('Choose the gender',
+              style: TextStyle(color: Colors.cyan[200], fontSize: 20.0)),
           Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 20.0),
-            child: Container(
-              color: Colors.white,
-              child: Row(
+            padding: const EdgeInsets.only(top: 8.0, right: 15.0, left: 15.0),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: ToggleButtons(
+                borderColor: Colors.black,
+                fillColor: Colors.grey,
+                borderWidth: 2,
+                selectedBorderColor: Colors.cyanAccent,
+                selectedColor: Colors.white,
+                borderRadius: BorderRadius.circular(0),
                 children: [
-                  SizedBox(
-                    width: 10.0,
-                  ),
-                  Material(
-                    child: InkWell(
-                      onTap: () {
-                        SelectIntent();
-                      },
-                      child: Icon(
-                        Icons.drive_eta,
-                        size: 70.0,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 30.0,
+                  Icon(
+                    Icons.drive_eta,
+                    size: 90.0,
                   ),
                   Icon(
                     Icons.motorcycle_outlined,
-                    size: 70.0,
-                  ),
-                  SizedBox(
-                    width: 30.0,
+                    size: 90.0,
                   ),
                   Icon(
                     Icons.airport_shuttle_rounded,
-                    size: 70.0,
-                  ),
-                  SizedBox(
-                    width: 30.0,
+                    size: 90.0,
                   ),
                   Icon(
                     Icons.electric_rickshaw,
-                    size: 70.0,
+                    size: 90.0,
                   )
                 ],
+                onPressed: (int index) {
+                  setState(() {
+                    for (int buttonIndex = 0;
+                        buttonIndex < isSelected.length;
+                        buttonIndex++) {
+                      if (buttonIndex == index) {
+                        isSelected[buttonIndex] = !isSelected[buttonIndex];
+                      } else {
+                        isSelected[buttonIndex] = false;
+                      }
+                    }
+                  });
+                },
+                isSelected: isSelected,
               ),
             ),
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Container(
-              color: Colors.white,
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 25.0,
-                  ),
-                  Text(
-                    'Car',
-                    style: TextStyle(color: Colors.cyan[200], fontSize: 20.0),
-                  ),
-                  SizedBox(
-                    width: 50.0,
-                  ),
-                  Text(
-                    'Motor',
-                    style: TextStyle(color: Colors.cyan[200], fontSize: 20.0),
-                  ),
-                  SizedBox(
-                    width: 60.0,
-                  ),
-                  Text(
-                    'Bus',
-                    style: TextStyle(color: Colors.cyan[200], fontSize: 20.0),
-                  ),
-                  SizedBox(
-                    width: 40.0,
-                  ),
-                  Text(
-                    'Electric_rickshaw',
-                    style: TextStyle(color: Colors.cyan[200], fontSize: 20.0),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          // ToggleButtons(children: [
+          //   Text(
+          //     'Car',
+          //     style: TextStyle(color: Colors.cyan[200], fontSize: 20.0),
+          //   ),
+          //   Text(
+          //     'Motor',
+          //     style: TextStyle(color: Colors.cyan[200], fontSize: 20.0),
+          //   ),
+          //   Text(
+          //     'Bus',
+          //     style: TextStyle(color: Colors.cyan[200], fontSize: 20.0),
+          //   ),
+          //   Text(
+          //     'Electric_rickshaw',
+          //     style: TextStyle(color: Colors.cyan[200], fontSize: 20.0),
+          //   ),
+          // ], isSelected: isSelected),
           TableCalendar(
             firstDay: DateTime.now(),
             lastDay: DateTime.utc(2023, 10, 16),
