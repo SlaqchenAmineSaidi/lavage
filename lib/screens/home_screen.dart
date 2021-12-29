@@ -32,97 +32,205 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Washing Car'),
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 100.0,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: Consumer<Auth>(builder: (context, auth, child) {
+        if (!auth.authenticated) {
+          return SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  child: Material(
+                SizedBox(
+                  height: 100.0,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      child: Material(
+                          child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BookService()));
+                        },
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage('images/im_log.jpg'),
+                          radius: 65.0,
+                        ),
+                      )),
+                    ),
+                    SizedBox(
+                      width: 70.0,
+                    ),
+                    Material(
                       child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BookService()));
-                    },
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('images/im_log.jpg'),
-                      radius: 65.0,
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                        },
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage('images/im_login.png'),
+                          radius: 65.0,
+                        ),
+                      ),
                     ),
-                  )),
+                  ],
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 60,
+                    ),
+                    Text(
+                      'Book Services',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      width: 120,
+                    ),
+                    Text(
+                      'My Account',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
                 SizedBox(
-                  width: 70.0,
+                  height: 15.0,
                 ),
-                Material(
-                  child: InkWell(
-                    onTap: () {},
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('images/im_login.png'),
-                      radius: 65.0,
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 140,
                     ),
-                  ),
+                    Material(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                        },
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage('images/histo.jpg'),
+                          radius: 65.0,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
+                Row(children: [
+                  SizedBox(
+                    width: 160,
+                  ),
+                  Text(
+                    'My History',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ]),
               ],
             ),
-            Row(
+          );
+        } else {
+          return SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: 60,
+                  height: 100.0,
                 ),
-                Text(
-                  'Book Services',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  width: 120,
-                ),
-                Text(
-                  'My Account',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 15.0,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 140,
-                ),
-                Material(
-                  child: InkWell(
-                    onTap: () {},
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('images/histo.jpg'),
-                      radius: 65.0,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      child: Material(
+                          child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BookService()));
+                        },
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage('images/im_log.jpg'),
+                          radius: 65.0,
+                        ),
+                      )),
                     ),
-                  ),
+                    SizedBox(
+                      width: 70.0,
+                    ),
+                    Material(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                        },
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage('images/im_login.png'),
+                          radius: 65.0,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 60,
+                    ),
+                    Text(
+                      'Book Services',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      width: 120,
+                    ),
+                    Text(
+                      'My Account',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 140,
+                    ),
+                    Material(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                        },
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage('images/histo.jpg'),
+                          radius: 65.0,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(children: [
+                  SizedBox(
+                    width: 160,
+                  ),
+                  Text(
+                    'My History',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ]),
               ],
             ),
-            Row(children: [
-              SizedBox(
-                width: 160,
-              ),
-              Text(
-                'My History',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ]),
-          ],
-        ),
-      ),
+          );
+        }
+      }),
       drawer: Drawer(child: Consumer<Auth>(builder: (context, auth, child) {
         if (!auth.authenticated) {
           return ListView(
