@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel/screens/login_screen.dart';
+import 'package:flutter_laravel/services/auth.dart';
+import 'package:provider/provider.dart';
 
 class Wash_services extends StatefulWidget {
   const Wash_services({Key key}) : super(key: key);
@@ -9,6 +11,8 @@ class Wash_services extends StatefulWidget {
 }
 
 class _Wash_servicesState extends State<Wash_services> {
+  List<String> s = List<String>();
+  int a;
   List<bool> isSelected;
   List<bool> isSelected1;
   List<bool> isSelected2;
@@ -28,6 +32,7 @@ class _Wash_servicesState extends State<Wash_services> {
     isSelected1 = [false];
     isSelected2 = [false];
     isSelected3 = [false];
+    a = 0;
     super.initState();
   }
 
@@ -260,8 +265,49 @@ class _Wash_servicesState extends State<Wash_services> {
                 child: TextButton(
                   style: flatButtonStyle,
                   onPressed: () {
+                    int price() {
+                      if (isSelected.toString() == '[true]') {
+                        a += 20;
+                      }
+                      if (isSelected1.toString() == '[true]') {
+                        a += 25;
+                      }
+                      if (isSelected2.toString() == '[true]') {
+                        a += 25;
+                      }
+                      if (isSelected.toString() == '[true]') {
+                        a += 30;
+                      }
+                      return a;
+                    }
+
+                    List<String> service() {
+                      if (isSelected.toString() == '[true]') {
+                        s.add("Body Wash");
+                      }
+                      if (isSelected1.toString() == '[true]') {
+                        s.add("Interior Cleaning");
+                      }
+                      if (isSelected2.toString() == '[true]') {
+                        s.add("Light Service");
+                      }
+                      if (isSelected3.toString() == '[true]') {
+                        s.add("Engine Detailing");
+                      }
+                      return s;
+                    }
+
+                    Map creds = {
+                      'services': service(),
+                      'price': price(),
+                    };
+                    Provider.of<Auth>(context, listen: false)
+                        .store(creds: creds);
+                    Navigator.pop(context);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => LoginScreen()));
+
+                    print(price);
                   },
                   child: Text(
                     'Book',

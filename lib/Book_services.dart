@@ -1,6 +1,8 @@
 // import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel/Wash_services.dart';
+import 'package:flutter_laravel/services/auth.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class BookService extends StatefulWidget {
@@ -11,6 +13,9 @@ class BookService extends StatefulWidget {
 }
 
 class _BookServiceState extends State<BookService> {
+  List<String> t = List<String>();
+  List<String> ti = List<String>();
+  List<String> tim = List<String>();
   CalendarFormat _calendarFormat = CalendarFormat.week;
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay;
@@ -327,6 +332,93 @@ class _BookServiceState extends State<BookService> {
                       child: TextButton(
                         style: flatButtonStyle,
                         onPressed: () {
+                          String gender() {
+                            if (isSelected.toString() ==
+                                '[true, false, false, false]') {
+                              return 'car';
+                            }
+                            if (isSelected.toString() ==
+                                '[false, true, false, false]') {
+                              return 'bus';
+                            }
+                            if (isSelected.toString() ==
+                                '[false, false, true, false]') {
+                              return 'track';
+                            }
+                            if (isSelected.toString() ==
+                                '[false, false, false, true]') {
+                              return 'motor';
+                            }
+                          }
+
+                          List<String> time() {
+                            if (_isSelected1.toString() ==
+                                '[true, false, false, false]') {
+                              t.add('09:00 AM');
+                            }
+                            if (_isSelected1.toString() ==
+                                '[false, true, false, false]') {
+                              t.add('10:00 AM');
+                            }
+                            if (_isSelected1.toString() ==
+                                '[false, false, true, false]') {
+                              t.add('11:00 AM');
+                            }
+                            if (_isSelected1.toString() ==
+                                '[false, false, false, true]') {
+                              t.add('12:00 AM');
+                            }
+                            return t;
+                          }
+
+                          List<String> time2() {
+                            if (_isSelected2.toString() ==
+                                '[true, false, false, false]') {
+                              ti.add('01:00 PM');
+                            }
+                            if (_isSelected2.toString() ==
+                                '[false, true, false, false]') {
+                              ti.add('02:00 PM');
+                            }
+                            if (_isSelected2.toString() ==
+                                '[false, false, true, false]') {
+                              ti.add('03:00 PM');
+                            }
+                            if (_isSelected2.toString() ==
+                                '[false, false, false, true]') {
+                              ti.add('04:00 PM');
+                            }
+                            return ti;
+                          }
+
+                          List<String> time3() {
+                            if (_isSelected3.toString() ==
+                                '[true, false, false, false]') {
+                              tim.add('05:00 PM');
+                            }
+                            if (_isSelected3.toString() ==
+                                '[false, true, false, false]') {
+                              tim.add('06:00 PM');
+                            }
+                            if (_isSelected3.toString() ==
+                                '[false, false, true, false]') {
+                              tim.add('07:00 PM');
+                            }
+                            if (_isSelected3.toString() ==
+                                '[false, false, false, true]') {
+                              tim.add('08:00 PM');
+                            }
+                            return tim;
+                          }
+
+                          Map creds = {
+                            'gender': gender(),
+                            'day': _selectedDay.toString(),
+                            'time': time() + time2() + time3()
+                          };
+                          Provider.of<Auth>(context, listen: false)
+                              .store(creds: creds);
+                          Navigator.pop(context);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
