@@ -123,6 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Icons.lock,
                               ),
                               suffixIcon: Material(
+                                color: Colors.transparent,
                                 child: InkWell(
                                   child: Icon(
                                     Icons.remove_red_eye,

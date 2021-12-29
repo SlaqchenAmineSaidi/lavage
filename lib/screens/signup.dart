@@ -160,6 +160,7 @@ class _SignupScreenState extends State<Signup> {
                               Icons.lock,
                             ),
                             suffixIcon: Material(
+                              color: Colors.transparent,
                               child: InkWell(
                                 child: Icon(
                                   Icons.remove_red_eye,

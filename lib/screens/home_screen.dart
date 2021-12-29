@@ -116,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: 160,
               ),
               Text(
-                'Book Services',
+                'My History',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ]),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/screens/home_screen.dart';
 import 'package:flutter_laravel/screens/login_screen.dart';
 import 'package:flutter_laravel/services/auth.dart';
+import 'package:flutter_laravel/services/service.dart';
 import 'package:provider/provider.dart';
 
 class Wash_services extends StatefulWidget {
@@ -11,7 +13,7 @@ class Wash_services extends StatefulWidget {
 }
 
 class _Wash_servicesState extends State<Wash_services> {
-  List<String> s = List<String>();
+  String s, d, f, g;
   int a;
   List<bool> isSelected;
   List<bool> isSelected1;
@@ -281,31 +283,38 @@ class _Wash_servicesState extends State<Wash_services> {
                       return a;
                     }
 
-                    List<String> service() {
+                    String service() {
                       if (isSelected.toString() == '[true]') {
-                        s.add("Body Wash");
+                        s = "Body Wash";
+                      } else {
+                        s = '';
                       }
                       if (isSelected1.toString() == '[true]') {
-                        s.add("Interior Cleaning");
+                        d = "Interior Cleaning";
+                      } else {
+                        d = '';
                       }
                       if (isSelected2.toString() == '[true]') {
-                        s.add("Light Service");
+                        f = "Light Service";
+                      } else {
+                        f = '';
                       }
                       if (isSelected3.toString() == '[true]') {
-                        s.add("Engine Detailing");
+                        g = "Engine Detailing";
+                      } else {
+                        g = '';
                       }
-                      return s;
+                      return s + d + f + g;
                     }
 
-                    Map creds = {
-                      'services': service(),
+                    Map creds2 = {
+                      'title': service(),
                       'price': price(),
                     };
-                    Provider.of<Auth>(context, listen: false)
-                        .store(creds: creds);
-                    Navigator.pop(context);
+                    Provider.of<Serv>(context, listen: false)
+                        .reserver(creds2: creds2);
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                        MaterialPageRoute(builder: (context) => HomeScreen()));
 
                     print(price);
                   },

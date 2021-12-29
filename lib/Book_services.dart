@@ -23,6 +23,7 @@ class _BookServiceState extends State<BookService> {
   List<bool> _isSelected1;
   List<bool> _isSelected2;
   List<bool> _isSelected3;
+  int issel = 0;
   final ButtonStyle flatButtonStyle = TextButton.styleFrom(
     primary: Colors.black87,
     minimumSize: Size(110, 50),
@@ -93,9 +94,9 @@ class _BookServiceState extends State<BookService> {
                       scrollDirection: Axis.horizontal,
                       child: ToggleButtons(
                         borderColor: Colors.black,
-                        fillColor: Colors.white,
+                        fillColor: Colors.blueAccent,
                         borderWidth: 2,
-                        selectedBorderColor: Colors.red[900],
+                        selectedBorderColor: Colors.blueAccent,
                         selectedColor: Colors.white,
                         borderRadius: BorderRadius.circular(0),
                         children: [
@@ -248,6 +249,8 @@ class _BookServiceState extends State<BookService> {
                               _isSelected1[buttonIndex] = false;
                             }
                           }
+                          _isSelected2 = [false, false, false, false];
+                          _isSelected3 = [false, false, false, false];
                         });
                       },
                     ),
@@ -286,6 +289,8 @@ class _BookServiceState extends State<BookService> {
                             _isSelected2[buttonIndex] = false;
                           }
                         }
+                        _isSelected1 = [false, false, false, false];
+                        _isSelected3 = [false, false, false, false];
                       });
                     },
                   ),
@@ -323,6 +328,8 @@ class _BookServiceState extends State<BookService> {
                             _isSelected3[buttonIndex] = false;
                           }
                         }
+                        _isSelected1 = [false, false, false, false];
+                        _isSelected2 = [false, false, false, false];
                       });
                     },
                   ),
