@@ -18,7 +18,7 @@ class Auth extends ChangeNotifier {
     print(creds);
 
     try {
-      Dio.Response response = await dio().post('/sanctum/token', data: creds);
+      Dio.Response response = await dio().post('/login', data: creds);
       print(response.data.toString());
 
       String token = response.data.toString();
@@ -32,8 +32,7 @@ class Auth extends ChangeNotifier {
     print(creds);
 
     try {
-      Dio.Response response =
-          await dio().post('/sanctum/token/store', data: creds);
+      Dio.Response response = await dio().post('/store', data: creds);
       print(response.data.toString());
 
       String token = response.data.toString();
