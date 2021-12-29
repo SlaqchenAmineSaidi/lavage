@@ -13,6 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool _obscureText = true;
 
   @override
   void initState() {
@@ -115,14 +116,23 @@ class _LoginScreenState extends State<LoginScreen> {
                             validator: (value) =>
                                 value.isEmpty ? 'please enter password' : null,
                             keyboardType: TextInputType.visiblePassword,
-                            obscureText: true,
+                            obscureText: _obscureText,
                             decoration: InputDecoration(
                               labelText: 'Password',
                               prefixIcon: Icon(
                                 Icons.lock,
                               ),
-                              suffixIcon: Icon(
-                                Icons.remove_red_eye,
+                              suffixIcon: Material(
+                                child: InkWell(
+                                  child: Icon(
+                                    Icons.remove_red_eye,
+                                  ),
+                                  onTap: () {
+                                    setState(() {
+                                      _obscureText = !_obscureText;
+                                    });
+                                  },
+                                ),
                               ),
                               fillColor: Colors.transparent,
                               errorStyle: TextStyle(
