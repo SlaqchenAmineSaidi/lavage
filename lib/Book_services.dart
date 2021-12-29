@@ -411,13 +411,13 @@ class _BookServiceState extends State<BookService> {
                             return tim;
                           }
 
-                          Map creds = {
+                          Map creds1 = {
                             'gender': gender(),
                             'day': _selectedDay.toString(),
                             'time': time() + time2() + time3()
                           };
                           Provider.of<Auth>(context, listen: false)
-                              .store(creds: creds);
+                              .reserver(creds1: creds1);
                           Navigator.pop(context);
                           Navigator.push(
                               context,
