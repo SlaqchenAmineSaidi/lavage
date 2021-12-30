@@ -1,7 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/models/reservation.dart';
 import 'package:flutter_laravel/screens/home_screen.dart';
 import 'package:flutter_laravel/screens/login_screen.dart';
 import 'package:flutter_laravel/services/auth.dart';
+import 'package:flutter_laravel/services/dio.dart';
+import 'package:flutter_laravel/services/reserver.dart';
 import 'package:flutter_laravel/services/service.dart';
 import 'package:provider/provider.dart';
 
@@ -28,6 +32,7 @@ class _Wash_servicesState extends State<Wash_services> {
       borderRadius: BorderRadius.all(Radius.circular(6.0)),
     ),
   );
+
   @override
   void initState() {
     isSelected = [false];
@@ -277,7 +282,7 @@ class _Wash_servicesState extends State<Wash_services> {
                       if (isSelected2.toString() == '[true]') {
                         a += 25;
                       }
-                      if (isSelected.toString() == '[true]') {
+                      if (isSelected3.toString() == '[true]') {
                         a += 30;
                       }
                       return a;
@@ -308,6 +313,7 @@ class _Wash_servicesState extends State<Wash_services> {
                     }
 
                     Map creds2 = {
+                      'reservation_id': Res.d,
                       'title': service(),
                       'price': price(),
                     };
@@ -315,7 +321,6 @@ class _Wash_servicesState extends State<Wash_services> {
                         .reserver(creds2: creds2);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => HomeScreen()));
-
                     print(price);
                   },
                   child: Text(
