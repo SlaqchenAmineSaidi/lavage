@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/MyHistoryfulWidget.dart';
 import 'package:flutter_laravel/onboarding/Fonboarding.dart';
+import 'package:flutter_laravel/screens/WashMan.dart';
+import 'package:flutter_laravel/screens/home_screen.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_laravel/services/reserver.dart';
 import 'package:flutter_laravel/services/service.dart';
@@ -24,7 +27,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Washing cars',
-      home: OnBoarding(),
+      //     home: OnBoarding(),
+      home: HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

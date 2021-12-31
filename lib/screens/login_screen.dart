@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, prefer_final_fields, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/screens/home_screen.dart';
 import 'package:flutter_laravel/screens/signup.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('images/login.jpg'),
+                      image: AssetImage('images/logina.jpg'),
                       fit: BoxFit.cover)),
             ),
             Padding(
@@ -61,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: TextStyle(
                             fontSize: 50,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: Colors.white,
                           ),
                         ),
                         SizedBox(
@@ -162,6 +163,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Provider.of<Auth>(context, listen: false)
                                     .login(creds: creds);
                                 Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HomeScreen()));
                               }
                             },
                             child: Text(

@@ -49,7 +49,7 @@ class _SignupScreenState extends State<Signup> {
           Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('images/login.jpg'), fit: BoxFit.cover)),
+                    image: AssetImage('images/logina.jpg'), fit: BoxFit.cover)),
           ),
           Padding(
             padding: const EdgeInsets.all(30.0),
@@ -68,7 +68,7 @@ class _SignupScreenState extends State<Signup> {
                         style: TextStyle(
                           fontSize: 50,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                       SizedBox(

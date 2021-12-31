@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel/Book_services.dart';
+import 'package:flutter_laravel/MyHistoryfulWidget.dart';
 import 'package:flutter_laravel/screens/login_screen.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -28,264 +29,259 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
-      appBar: AppBar(
-        title: Text('Washing Car'),
-      ),
-      body: Consumer<Auth>(builder: (context, auth, child) {
-        if (!auth.authenticated) {
-          return SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 100.0,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      child: Material(
-                          child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => BookService()));
-                        },
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('images/im_log.jpg'),
-                          radius: 65.0,
+        //backgroundColor: Colors.blueGrey[300],
+        appBar: AppBar(
+          title: Text('Washing Car'),
+        ),
+        body: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('images/login.jpg'),
+                      fit: BoxFit.cover)),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(20.0),
+                    child: Center(
+                        child: Container(
+                      child: Image(
+                        image: AssetImage(
+                          'images/Lavage_logo.png',
                         ),
-                      )),
-                    ),
-                    SizedBox(
-                      width: 70.0,
-                    ),
-                    Material(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
-                        },
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('images/im_login.png'),
-                          radius: 65.0,
-                        ),
+                        width: 120.0,
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 60,
-                    ),
-                    Text(
-                      'Book Services',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 120,
-                    ),
-                    Text(
-                      'My Account',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 15.0,
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 140,
-                    ),
-                    Material(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
-                        },
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('images/histo.jpg'),
-                          radius: 65.0,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(children: [
+                    )),
+                  ),
                   SizedBox(
-                    width: 160,
+                    height: 20,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        color: Colors.transparent,
+                        child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => BookService()));
+                              },
+                              child: CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('images/im_log.jpg'),
+                                radius: 65.0,
+                              ),
+                            )),
+                      ),
+                      SizedBox(
+                        width: 85.0,
+                      ),
+                      Container(
+                        color: Colors.transparent,
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => LoginScreen()));
+                            },
+                            child: CircleAvatar(
+                              backgroundImage:
+                                  AssetImage('images/im_login.png'),
+                              radius: 65.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 40,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            border: Border.all(
+                                color: Colors.black, // Set border color
+                                width: 3.0), // Set border width
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                10.0)), // Set rounded corner radius
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 5,
+                                  color: Colors.blue[100],
+                                  offset: Offset(1, 3))
+                            ] // Make rounded corner of border
+                            ),
+                        child: Text(
+                          "Book service",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 80,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            border: Border.all(
+                                color: Colors.black, // Set border color
+                                width: 3.0), // Set border width
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                10.0)), // Set rounded corner radius
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 5,
+                                  color: Colors.blue[100],
+                                  offset: Offset(1, 3))
+                            ] // Make rounded corner of border
+                            ),
+                        child: Text(
+                          "My account",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15.0,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 140,
+                      ),
+                      Container(
+                        color: Colors.transparent,
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => MyHistoryfulWidget()));
+                            },
+                            child: CircleAvatar(
+                              backgroundImage: AssetImage('images/histo.jpg'),
+                              radius: 65.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(children: [
+                    SizedBox(
+                      width: 150,
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          border: Border.all(
+                              color: Colors.black, // Set border color
+                              width: 3.0), // Set border width
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              10.0)), // Set rounded corner radius
+                          boxShadow: [
+                            BoxShadow(
+                                blurRadius: 5,
+                                color: Colors.blue[100],
+                                offset: Offset(1, 3))
+                          ] // Make rounded corner of border
+                          ),
+                      child: Text(
+                        "My History",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ]),
+                ],
+              ),
+            ),
+          ],
+        ));
+    drawer:
+    Drawer(child: Consumer<Auth>(builder: (context, auth, child) {
+      if (!auth.authenticated) {
+        return ListView(
+          children: [
+            ListTile(
+              title: Text('Login'),
+              leading: Icon(Icons.login),
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
+              },
+            ),
+          ],
+        );
+      } else {
+        return ListView(
+          children: [
+            DrawerHeader(
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 30,
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   Text(
-                    'My History',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    auth.user.name,
+                    style: TextStyle(color: Colors.white),
                   ),
-                ]),
-              ],
-            ),
-          );
-        } else {
-          return SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 100.0,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      child: Material(
-                          child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => BookService()));
-                        },
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('images/im_log.jpg'),
-                          radius: 65.0,
-                        ),
-                      )),
-                    ),
-                    SizedBox(
-                      width: 70.0,
-                    ),
-                    Material(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
-                        },
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('images/im_login.png'),
-                          radius: 65.0,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 60,
-                    ),
-                    Text(
-                      'Book Services',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 120,
-                    ),
-                    Text(
-                      'My Account',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 15.0,
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 140,
-                    ),
-                    Material(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
-                        },
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('images/histo.jpg'),
-                          radius: 65.0,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(children: [
                   SizedBox(
-                    width: 160,
+                    height: 10,
                   ),
                   Text(
-                    'My History',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    auth.user.email,
+                    style: TextStyle(color: Colors.white),
                   ),
-                ]),
-              ],
+                ],
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
             ),
-          );
-        }
-      }),
-      drawer: Drawer(child: Consumer<Auth>(builder: (context, auth, child) {
-        if (!auth.authenticated) {
-          return ListView(
-            children: [
-              ListTile(
-                title: Text('Login'),
-                leading: Icon(Icons.login),
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
-                },
-              ),
-            ],
-          );
-        } else {
-          return ListView(
-            children: [
-              DrawerHeader(
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 30,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      auth.user.name,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      auth.user.email,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-              ),
-              ListTile(
-                title: Text('Logout'),
-                leading: Icon(Icons.logout),
-                onTap: () {
-                  Provider.of<Auth>(context, listen: false).logout();
-                },
-              ),
-            ],
-          );
-        }
-      })),
-    );
+            ListTile(
+              title: Text('Logout'),
+              leading: Icon(Icons.logout),
+              onTap: () {
+                Provider.of<Auth>(context, listen: false).logout();
+              },
+            ),
+          ],
+        );
+      }
+    }));
   }
 }

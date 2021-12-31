@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel/onboarding/OnBoardingPage.dart';
 import 'package:flutter_laravel/screens/home_screen.dart';
+import 'package:flutter_laravel/screens/login_screen.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class OnBoarding extends StatefulWidget {
@@ -79,7 +80,7 @@ class _OnBoardingState extends State<OnBoarding> {
         pageColor: Colors.white,
       );
   void goToHome(context) => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => HomeScreen()),
+        MaterialPageRoute(builder: (_) => LoginScreen()),
       );
   DotsDecorator getDotDecoration() => DotsDecorator(
         color: const Color(0xFFBDBDBD),
