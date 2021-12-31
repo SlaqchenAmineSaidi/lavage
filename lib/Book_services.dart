@@ -51,397 +51,410 @@ class _BookServiceState extends State<BookService> {
       ),
       body: Stack(
         children: [
-          Container(
-            //decoration: BoxDecoration(
-            //image: DecorationImage(
-            //image: AssetImage('images/amine.jpeg'), fit: BoxFit.cover)),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                children: [
-                  Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        margin: EdgeInsets.only(right: 100, left: 100),
-                        padding: EdgeInsets.all(10),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.lightBlue,
-                            border: Border.all(
-                                color: Colors.black, // Set border color
-                                width: 3.0), // Set border width
-                            borderRadius: BorderRadius.all(Radius.circular(
-                                10.0)), // Set rounded corner radius
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 10,
-                                  color: Colors.black,
-                                  offset: Offset(1, 3))
-                            ] // Make rounded corner of border
-                            ),
-                        child: Text(
-                          "Choose your vehicle",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      )),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: 12.0, right: 15.0, left: 15.0),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: ToggleButtons(
-                        borderColor: Colors.black,
-                        fillColor: Colors.blueAccent,
-                        borderWidth: 2,
-                        selectedBorderColor: Colors.blueAccent,
-                        selectedColor: Colors.white,
-                        borderRadius: BorderRadius.circular(0),
-                        children: [
-                          Image.asset('images/caar.png', width: 100.0),
-                          Image.asset('images/buus.PNG', width: 100.0),
-                          Image.asset('images/truck_logo.jpg', width: 100.0),
-                          Image.asset('images/moto_logo.png', width: 100.0),
-                        ],
-                        onPressed: (int index) {
-                          setState(() {
-                            for (int buttonIndex = 0;
-                                buttonIndex < isSelected.length;
-                                buttonIndex++) {
-                              if (buttonIndex == index) {
-                                isSelected[buttonIndex] =
-                                    !isSelected[buttonIndex];
-                              } else {
-                                isSelected[buttonIndex] = false;
-                              }
-                            }
-                          });
-                        },
-                        isSelected: isSelected,
-                        color: Colors.green,
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      margin: EdgeInsets.only(right: 100, left: 100),
+                      padding: EdgeInsets.all(10),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Colors.lightBlue,
+                          border: Border.all(
+                              color: Colors.black, // Set border color
+                              width: 3.0), // Set border width
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              10.0)), // Set rounded corner radius
+                          boxShadow: [
+                            BoxShadow(
+                                blurRadius: 10,
+                                color: Colors.black,
+                                offset: Offset(1, 3))
+                          ] // Make rounded corner of border
+                          ),
+                      child: Text(
+                        "Choose your vehicle",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold),
                       ),
-                    ),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Container(
-                        margin: EdgeInsets.only(right: 100, left: 100),
-                        padding: EdgeInsets.all(10),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.lightBlue,
-                            border: Border.all(
-                                color: Colors.black, // Set border color
-                                width: 3.0), // Set border width
-                            borderRadius: BorderRadius.all(Radius.circular(
-                                10.0)), // Set rounded corner radius
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 10,
-                                  color: Colors.black,
-                                  offset: Offset(1, 3))
-                            ] // Make rounded corner of border
-                            ),
-                        child: Text(
-                          "Select Date & Time",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      )),
-                  TableCalendar(
-                    firstDay: DateTime.now(),
-                    lastDay: DateTime.utc(2023, 10, 16),
-                    focusedDay: _focusedDay,
-                    calendarFormat: _calendarFormat,
-                    selectedDayPredicate: (day) {
-                      // Use `selectedDayPredicate` to determine which day is currently selected.
-                      // If this returns true, then `day` will be marked as selected.
-
-                      // Using `isSameDay` is recommended to disregard
-                      // the time-part of compared DateTime objects.
-                      return isSameDay(_selectedDay, day);
-                    },
-                    onDaySelected: (selectedDay, focusedDay) {
-                      if (!isSameDay(_selectedDay, selectedDay)) {
-                        // Call `setState()` when updating the selected day
-                        setState(() {
-                          _selectedDay = selectedDay;
-                          _focusedDay = focusedDay;
-                        });
-                      }
-                    },
-                    onFormatChanged: (format) {
-                      if (_calendarFormat != format) {
-                        // Call `setState()` when updating calendar format
-                        setState(() {
-                          _calendarFormat = format;
-                        });
-                      }
-                    },
-                    onPageChanged: (focusedDay) {
-                      // No need to call `setState()` here
-                      _focusedDay = focusedDay;
-                    },
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.all(25.0),
-                      child: Container(
-                        child: Text(
-                          "12 Slots",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                        margin: EdgeInsets.only(right: 280, left: 0),
-                        padding: EdgeInsets.all(10),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.lightBlue,
-                            border: Border.all(
-                                color: Colors.black, // Set border color
-                                width: 3.0), // Set border width
-                            borderRadius: BorderRadius.all(Radius.circular(
-                                10.0)), // Set rounded corner radius
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 10,
-                                  color: Colors.black,
-                                  offset: Offset(1, 3))
-                            ] // Make rounded corner of border
-                            ),
-                      )),
-                  Padding(
-                    padding: const EdgeInsets.all(0.0),
+                    )),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(top: 12.0, right: 15.0, left: 15.0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
                     child: ToggleButtons(
-                      selectedBorderColor: Colors.blue,
-                      children: [
-                        Text(
-                          '     09:00 AM     ',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        Text(
-                          '     10:00 AM     ',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        Text(
-                          '     11:00 AM     ',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        Text(
-                          '     12:00 AM     ',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ],
                       borderColor: Colors.black,
-                      isSelected: _isSelected1,
+                      fillColor: Colors.blueAccent,
+                      borderWidth: 2,
+                      selectedBorderColor: Colors.blueAccent,
+                      selectedColor: Colors.white,
+                      borderRadius: BorderRadius.circular(0),
+                      children: [
+                        Image.asset('images/caar.png', width: 100.0),
+                        Image.asset('images/buus.PNG', width: 100.0),
+                        Image.asset('images/truck_logo.jpg', width: 100.0),
+                        Image.asset('images/moto_logo.png', width: 100.0),
+                      ],
                       onPressed: (int index) {
                         setState(() {
                           for (int buttonIndex = 0;
-                              buttonIndex < _isSelected1.length;
+                              buttonIndex < isSelected.length;
                               buttonIndex++) {
                             if (buttonIndex == index) {
-                              _isSelected1[buttonIndex] =
-                                  !_isSelected1[buttonIndex];
+                              isSelected[buttonIndex] =
+                                  !isSelected[buttonIndex];
                             } else {
-                              _isSelected1[buttonIndex] = false;
+                              isSelected[buttonIndex] = false;
                             }
                           }
-                          _isSelected2 = [false, false, false, false];
-                          _isSelected3 = [false, false, false, false];
                         });
                       },
+                      isSelected: isSelected,
+                      color: Colors.green,
                     ),
                   ),
-                  ToggleButtons(
+                ),
+                Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Container(
+                      margin: EdgeInsets.only(right: 100, left: 100),
+                      padding: EdgeInsets.all(10),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Colors.lightBlue,
+                          border: Border.all(
+                              color: Colors.black, // Set border color
+                              width: 3.0), // Set border width
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              10.0)), // Set rounded corner radius
+                          boxShadow: [
+                            BoxShadow(
+                                blurRadius: 10,
+                                color: Colors.black,
+                                offset: Offset(1, 3))
+                          ] // Make rounded corner of border
+                          ),
+                      child: Text(
+                        "Select Date & Time",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    )),
+                TableCalendar(
+                  firstDay: DateTime.now(),
+                  lastDay: DateTime.utc(2023, 10, 16),
+                  focusedDay: _focusedDay,
+                  calendarFormat: _calendarFormat,
+                  selectedDayPredicate: (day) {
+                    // Use `selectedDayPredicate` to determine which day is currently selected.
+                    // If this returns true, then `day` will be marked as selected.
+
+                    // Using `isSameDay` is recommended to disregard
+                    // the time-part of compared DateTime objects.
+                    return isSameDay(_selectedDay, day);
+                  },
+                  onDaySelected: (selectedDay, focusedDay) {
+                    if (!isSameDay(_selectedDay, selectedDay)) {
+                      // Call `setState()` when updating the selected day
+                      setState(() {
+                        _selectedDay = selectedDay;
+                        _focusedDay = focusedDay;
+                      });
+                    }
+                  },
+                  onFormatChanged: (format) {
+                    if (_calendarFormat != format) {
+                      // Call `setState()` when updating calendar format
+                      setState(() {
+                        _calendarFormat = format;
+                      });
+                    }
+                  },
+                  onPageChanged: (focusedDay) {
+                    // No need to call `setState()` here
+                    _focusedDay = focusedDay;
+                  },
+                ),
+                Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: Container(
+                      child: Text(
+                        "12 Slots",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                      margin: EdgeInsets.only(right: 280, left: 0),
+                      padding: EdgeInsets.all(10),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Colors.lightBlue,
+                          border: Border.all(
+                              color: Colors.black, // Set border color
+                              width: 3.0), // Set border width
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              10.0)), // Set rounded corner radius
+                          boxShadow: [
+                            BoxShadow(
+                                blurRadius: 10,
+                                color: Colors.black,
+                                offset: Offset(1, 3))
+                          ] // Make rounded corner of border
+                          ),
+                    )),
+                Padding(
+                  padding: const EdgeInsets.all(0.0),
+                  child: ToggleButtons(
                     selectedBorderColor: Colors.blue,
                     children: [
                       Text(
-                        '     01:00 PM     ',
+                        '     09:00 AM     ',
                         style: TextStyle(color: Colors.black),
                       ),
                       Text(
-                        '     02:00 PM     ',
+                        '     10:00 AM     ',
                         style: TextStyle(color: Colors.black),
                       ),
                       Text(
-                        '     03:00 PM     ',
+                        '     11:00 AM     ',
                         style: TextStyle(color: Colors.black),
                       ),
                       Text(
-                        '     04:00 PM     ',
+                        '     12:00 AM     ',
                         style: TextStyle(color: Colors.black),
                       ),
                     ],
-                    isSelected: _isSelected2,
                     borderColor: Colors.black,
+                    isSelected: _isSelected1,
                     onPressed: (int index) {
                       setState(() {
                         for (int buttonIndex = 0;
-                            buttonIndex < _isSelected2.length;
+                            buttonIndex < _isSelected1.length;
                             buttonIndex++) {
                           if (buttonIndex == index) {
-                            _isSelected2[buttonIndex] =
-                                !_isSelected2[buttonIndex];
+                            _isSelected1[buttonIndex] =
+                                !_isSelected1[buttonIndex];
                           } else {
-                            _isSelected2[buttonIndex] = false;
+                            _isSelected1[buttonIndex] = false;
                           }
                         }
-                        _isSelected1 = [false, false, false, false];
+                        _isSelected2 = [false, false, false, false];
                         _isSelected3 = [false, false, false, false];
                       });
                     },
                   ),
-                  ToggleButtons(
-                    selectedBorderColor: Colors.blue,
-                    children: [
-                      Text(
-                        '     05:00 PM     ',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      Text(
-                        '     06:00 PM     ',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      Text(
-                        '     07:00 PM     ',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      Text(
-                        '     08:00 PM     ',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                    isSelected: _isSelected3,
-                    borderColor: Colors.black,
-                    onPressed: (int index) {
-                      setState(() {
-                        for (int buttonIndex = 0;
-                            buttonIndex < _isSelected3.length;
-                            buttonIndex++) {
-                          if (buttonIndex == index) {
-                            _isSelected3[buttonIndex] =
-                                !_isSelected3[buttonIndex];
-                          } else {
-                            _isSelected3[buttonIndex] = false;
+                ),
+                ToggleButtons(
+                  selectedBorderColor: Colors.blue,
+                  children: [
+                    Text(
+                      '     01:00 PM     ',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    Text(
+                      '     02:00 PM     ',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    Text(
+                      '     03:00 PM     ',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    Text(
+                      '     04:00 PM     ',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
+                  isSelected: _isSelected2,
+                  borderColor: Colors.black,
+                  onPressed: (int index) {
+                    setState(() {
+                      for (int buttonIndex = 0;
+                          buttonIndex < _isSelected2.length;
+                          buttonIndex++) {
+                        if (buttonIndex == index) {
+                          _isSelected2[buttonIndex] =
+                              !_isSelected2[buttonIndex];
+                        } else {
+                          _isSelected2[buttonIndex] = false;
+                        }
+                      }
+                      _isSelected1 = [false, false, false, false];
+                      _isSelected3 = [false, false, false, false];
+                    });
+                  },
+                ),
+                ToggleButtons(
+                  selectedBorderColor: Colors.blue,
+                  children: [
+                    Text(
+                      '     05:00 PM     ',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    Text(
+                      '     06:00 PM     ',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    Text(
+                      '     07:00 PM     ',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    Text(
+                      '     08:00 PM     ',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
+                  isSelected: _isSelected3,
+                  borderColor: Colors.black,
+                  onPressed: (int index) {
+                    setState(() {
+                      for (int buttonIndex = 0;
+                          buttonIndex < _isSelected3.length;
+                          buttonIndex++) {
+                        if (buttonIndex == index) {
+                          _isSelected3[buttonIndex] =
+                              !_isSelected3[buttonIndex];
+                        } else {
+                          _isSelected3[buttonIndex] = false;
+                        }
+                      }
+                      _isSelected1 = [false, false, false, false];
+                      _isSelected2 = [false, false, false, false];
+                    });
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Container(
+                    child: TextButton(
+                      style: flatButtonStyle,
+                      onPressed: () {
+                        String gender() {
+                          if (isSelected.toString() ==
+                              '[true, false, false, false]') {
+                            return 'car';
+                          }
+                          if (isSelected.toString() ==
+                              '[false, true, false, false]') {
+                            return 'bus';
+                          }
+                          if (isSelected.toString() ==
+                              '[false, false, true, false]') {
+                            return 'track';
+                          }
+                          if (isSelected.toString() ==
+                              '[false, false, false, true]') {
+                            return 'motor';
                           }
                         }
-                        _isSelected1 = [false, false, false, false];
-                        _isSelected2 = [false, false, false, false];
-                      });
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(25.0),
-                    child: Container(
-                      child: TextButton(
-                        style: flatButtonStyle,
-                        onPressed: () {
-                          String gender() {
-                            if (isSelected.toString() ==
-                                '[true, false, false, false]') {
-                              return 'car';
-                            }
-                            if (isSelected.toString() ==
-                                '[false, true, false, false]') {
-                              return 'bus';
-                            }
-                            if (isSelected.toString() ==
-                                '[false, false, true, false]') {
-                              return 'track';
-                            }
-                            if (isSelected.toString() ==
-                                '[false, false, false, true]') {
-                              return 'motor';
-                            }
-                          }
 
-                          String time() {
-                            if (_isSelected1.toString() ==
-                                '[true, false, false, false]') {
-                              t = '09:00 AM';
-                            }
-                            if (_isSelected1.toString() ==
-                                '[false, true, false, false]') {
-                              t = '10:00 AM';
-                            }
-                            if (_isSelected1.toString() ==
-                                '[false, false, true, false]') {
-                              t = '11:00 AM';
-                            }
-                            if (_isSelected1.toString() ==
-                                '[false, false, false, true]') {
-                              t = '12:00 AM';
-                            }
-                            return t;
+                        String time() {
+                          if (_isSelected1.toString() ==
+                              '[true, false, false, false]') {
+                            t = '09:00 AM';
                           }
-
-                          String time2() {
-                            if (_isSelected2.toString() ==
-                                '[true, false, false, false]') {
-                              ti = '01:00 PM';
-                            }
-                            if (_isSelected2.toString() ==
-                                '[false, true, false, false]') {
-                              ti = '02:00 PM';
-                            }
-                            if (_isSelected2.toString() ==
-                                '[false, false, true, false]') {
-                              ti = '03:00 PM';
-                            }
-                            if (_isSelected2.toString() ==
-                                '[false, false, false, true]') {
-                              ti = '04:00 PM';
-                            }
-                            return ti;
+                          if (_isSelected1.toString() ==
+                              '[false, true, false, false]') {
+                            t = '10:00 AM';
                           }
-
-                          String time3() {
-                            if (_isSelected3.toString() ==
-                                '[true, false, false, false]') {
-                              tim = '05:00 PM';
-                            }
-                            if (_isSelected3.toString() ==
-                                '[false, true, false, false]') {
-                              tim = '06:00 PM';
-                            }
-                            if (_isSelected3.toString() ==
-                                '[false, false, true, false]') {
-                              tim = '07:00 PM';
-                            }
-                            if (_isSelected3.toString() ==
-                                '[false, false, false, true]') {
-                              tim = '08:00 PM';
-                            }
-                            return tim;
+                          if (_isSelected1.toString() ==
+                              '[false, false, true, false]') {
+                            t = '11:00 AM';
                           }
+                          if (_isSelected1.toString() ==
+                              '[false, false, false, true]') {
+                            t = '12:00 AM';
+                          }
+                          return t;
+                        }
 
-                          Map creds1 = {
-                            'gender': gender(),
-                            'day': _selectedDay.toString(),
-                            'time': time() + time2() + time3(),
-                          };
+                        String time2() {
+                          if (_isSelected2.toString() ==
+                              '[true, false, false, false]') {
+                            ti = '01:00 PM';
+                          }
+                          if (_isSelected2.toString() ==
+                              '[false, true, false, false]') {
+                            ti = '02:00 PM';
+                          }
+                          if (_isSelected2.toString() ==
+                              '[false, false, true, false]') {
+                            ti = '03:00 PM';
+                          }
+                          if (_isSelected2.toString() ==
+                              '[false, false, false, true]') {
+                            ti = '04:00 PM';
+                          }
+                          return ti;
+                        }
+
+                        String time3() {
+                          if (_isSelected3.toString() ==
+                              '[true, false, false, false]') {
+                            tim = '05:00 PM';
+                          }
+                          if (_isSelected3.toString() ==
+                              '[false, true, false, false]') {
+                            tim = '06:00 PM';
+                          }
+                          if (_isSelected3.toString() ==
+                              '[false, false, true, false]') {
+                            tim = '07:00 PM';
+                          }
+                          if (_isSelected3.toString() ==
+                              '[false, false, false, true]') {
+                            tim = '08:00 PM';
+                          }
+                          return tim;
+                        }
+
+                        Map creds1 = {
+                          'gender': gender(),
+                          'day': _selectedDay.toString(),
+                          'time': time() + time2() + time3(),
+                        };
+
+                        //  Navigator.pop(context);
+                        if (_focusedDay.toString() ==
+                                '[false, false, false, false]' ||
+                            isSelected.toString() ==
+                                '[false, false, false, false]' ||
+                            (_isSelected1.toString() ==
+                                    '[false, false, false, false]' &&
+                                _isSelected2.toString() ==
+                                    '[false, false, false, false]' &&
+                                _isSelected3.toString() ==
+                                    '[false, false, false, false]')) {
+                          print(creds1);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BookService()));
+                        } else {
                           print(creds1);
                           Provider.of<Res>(context, listen: false)
                               .reserver(creds1: creds1);
-                          //  Navigator.pop(context);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Wash_services()));
-                        },
-                        child: Text(
-                          'Next',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
+                        }
+                      },
+                      child: Text(
+                        'Next',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
         ],

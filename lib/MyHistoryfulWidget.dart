@@ -63,12 +63,12 @@ class _MyHistoryfulWidgetState extends State<MyHistoryfulWidget> {
             backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(Icons.reviews),
             label: 'Reviews',
             backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.comment),
             label: 'Comments',
             backgroundColor: Colors.black,
           ),

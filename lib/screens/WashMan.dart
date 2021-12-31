@@ -19,7 +19,6 @@ class _WashMan extends State<WashMan> {
   @override
   void initState() {
     _Washingnamecontroller.text = 'bogsni';
-    _numberController.text = '3';
     _phoneController.text = '0611771354';
 
     super.initState();
@@ -40,7 +39,7 @@ class _WashMan extends State<WashMan> {
           appBar: AppBar(
             title:
                 Text('Wash Man Account', style: TextStyle(color: Colors.black)),
-            backgroundColor: Colors.grey[200],
+            backgroundColor: Colors.black87,
           ),
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
@@ -49,7 +48,7 @@ class _WashMan extends State<WashMan> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 20,
+                    height: 100,
                   ),
                   Container(
                     height: 80,
@@ -59,11 +58,11 @@ class _WashMan extends State<WashMan> {
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 151, 151, 151)),
+                          color: Colors.white),
                     )),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 70,
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -127,58 +126,6 @@ class _WashMan extends State<WashMan> {
                                 borderRadius: BorderRadius.circular(16),
                               ),
                               child: TextFormField(
-                                controller: _numberController,
-                                //validation
-                                validator: (String value) {
-                                  // String pattern = r'(^[a-zA-Z ]*$)';
-                                  String pattern = r'(^[0-9]{1}$)';
-                                  RegExp regExp = new RegExp(pattern);
-                                  if (value.isEmpty) {
-                                    _errors.add("number of barber is required");
-                                    return ' ';
-                                  } else if (!regExp.hasMatch(value)) {
-                                    _errors.add(
-                                        "number of barber can't more than 9");
-                                    return ' ';
-                                  }
-                                  return null;
-                                },
-
-                                decoration: const InputDecoration(
-                                  filled: true,
-                                  fillColor: Colors.transparent,
-                                  errorStyle: TextStyle(
-                                    height: 0,
-                                    fontSize: 15,
-
-                                    //backgroundColor: Colors.transparent,
-                                    color: Colors.white,
-                                  ),
-                                  contentPadding:
-                                      EdgeInsets.symmetric(vertical: 5),
-                                  border: InputBorder.none,
-                                  labelText: "Number of Barbers",
-                                  prefixIcon: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 20),
-                                    child: Icon(
-                                      Icons.bubble_chart_outlined,
-                                      color: Colors.white,
-                                      size: 20,
-                                    ),
-                                  ),
-                                ),
-                                keyboardType: TextInputType.number,
-                                textInputAction: TextInputAction.next,
-                              ),
-                            ),
-                            const SizedBox(height: 20.0),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.3),
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                              child: TextFormField(
                                 controller: _phoneController,
                                 //validation
                                 validator: (String value) {
@@ -235,16 +182,11 @@ class _WashMan extends State<WashMan> {
                               height: 20.0,
                             ),
                             Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.blueGrey,
-                                borderRadius: BorderRadius.circular(16),
-                              ),
+                              margin: EdgeInsets.symmetric(horizontal: 10),
                               child: ElevatedButton(
                                 onPressed: () {
                                   Map creds = {
-                                    'salon_name': _Washingnamecontroller.text,
-                                    'nb_barber': _numberController.text,
+                                    'Washingname': _Washingnamecontroller.text,
                                     'phone': _phoneController.text,
                                   };
                                   if (_formKey.currentState.validate()) {
@@ -293,11 +235,13 @@ class _WashMan extends State<WashMan> {
                                     _errors.clear();
                                   });
                                 },
-                                child: Padding(
+                                child: Container(
+                                  margin:
+                                      EdgeInsets.symmetric(horizontal: 50.0),
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 16.0),
                                   child: Text(
-                                    "Upgrade to Salon",
+                                    "Apply",
                                   ),
                                 ),
                               ),

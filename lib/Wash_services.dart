@@ -317,10 +317,17 @@ class _Wash_servicesState extends State<Wash_services> {
                       'title': service(),
                       'price': price(),
                     };
-                    Provider.of<Serv>(context, listen: false)
-                        .reserver(creds2: creds2);
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                    if (isSelected != [false] ||
+                        isSelected2 != [false] ||
+                        isSelected3 != [false] ||
+                        isSelected1 != [false]) {
+                      Provider.of<Serv>(context, listen: false)
+                          .reserver(creds2: creds2);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                    }
                     print(price);
                   },
                   child: Text(

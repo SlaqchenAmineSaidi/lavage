@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel/Book_services.dart';
 import 'package:flutter_laravel/MyHistoryfulWidget.dart';
+import 'package:flutter_laravel/screens/WashMan.dart';
 import 'package:flutter_laravel/screens/login_screen.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -85,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             )),
                       ),
                       SizedBox(
-                        width: 85.0,
+                        width: 75.0,
                       ),
                       Container(
                         color: Colors.transparent,
@@ -94,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: InkWell(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => LoginScreen()));
+                                  builder: (context) => WashMan()));
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -137,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       SizedBox(
-                        width: 80,
+                        width: 40,
                       ),
                       Container(
                         padding: EdgeInsets.all(10),
@@ -157,10 +158,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             ] // Make rounded corner of border
                             ),
                         child: Text(
-                          "My account",
+                          "Become A Wash-Man",
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 18.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.bold),
                         ),
                       )
