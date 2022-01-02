@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel/screens/home_screen.dart';
+import 'package:flutter_laravel/services/Wash.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:provider/provider.dart';
@@ -185,14 +186,19 @@ class _WashMan extends State<WashMan> {
                               margin: EdgeInsets.symmetric(horizontal: 10),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Map creds = {
-                                    'Washingname': _Washingnamecontroller.text,
-                                    'phone': _phoneController.text,
+                                  Map creds2 = {
+                                    'wash_name': _Washingnamecontroller.text,
+                                    'phone_number': _phoneController.text,
                                   };
                                   if (_formKey.currentState.validate()) {
-                                    Provider.of<Auth>(context, listen: false)
-                                        .store(creds: creds);
-                                    print(creds);
+                                    Provider.of<Wash>(context, listen: false)
+                                        .washing(creds2: creds2);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                HomeScreen()));
+                                    print(creds2);
                                   } else {
                                     print(_errors);
                                     print(_errors.join("\n"));

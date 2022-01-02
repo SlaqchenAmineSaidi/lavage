@@ -3,6 +3,7 @@ import 'package:flutter_laravel/MyHistoryfulWidget.dart';
 import 'package:flutter_laravel/onboarding/Fonboarding.dart';
 import 'package:flutter_laravel/screens/WashMan.dart';
 import 'package:flutter_laravel/screens/home_screen.dart';
+import 'package:flutter_laravel/services/Wash.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_laravel/services/reserver.dart';
 import 'package:flutter_laravel/services/service.dart';
@@ -15,6 +16,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => Auth()),
         ChangeNotifierProvider(create: (context) => Res()),
         ChangeNotifierProvider(create: (context) => Serv()),
+        ChangeNotifierProvider(create: (context) => Wash()),
       ],
       child: MyApp(),
     ),

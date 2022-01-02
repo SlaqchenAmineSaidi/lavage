@@ -195,6 +195,7 @@ class _SignupScreenState extends State<Signup> {
                               'email': _emailController.text,
                               'password': _passwordController.text,
                               'device_name': 'mobile',
+                              'role': 1,
                             };
                             if (_formKey.currentState.validate()) {
                               Provider.of<Auth>(context, listen: false)

@@ -42,6 +42,18 @@ class Auth extends ChangeNotifier {
     }
   }
 
+  void update({Map creds}) async {
+    print(creds);
+    try {
+      Dio.Response response = await dio().put('/update', data: creds);
+      print(response.data.toString());
+      String token = response.data.toString();
+      this.tryToken(token: token);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   void tryToken({String token}) async {
     if (token == null) {
       return;
