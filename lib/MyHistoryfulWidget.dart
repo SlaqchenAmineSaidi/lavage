@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/screens/history/Reviews.dart';
 import 'package:flutter_laravel/screens/history/myBooking.dart';
 
 void main() => runApp(const MyApp());
@@ -30,10 +31,7 @@ class _MyHistoryfulWidgetState extends State<MyHistoryfulWidget> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     MyBooking(),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
+    Reviews(),
     Text(
       'Index 2: School',
       style: optionStyle,

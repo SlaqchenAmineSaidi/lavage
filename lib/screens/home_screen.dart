@@ -178,10 +178,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          onTap: () {
+                          onTap: () async {
+                            await Provider.of<Res>(context, listen: false)
+                                .index();
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => MyHistoryfulWidget()));
-                            Provider.of<Res>(context, listen: false).index();
                           },
                           child: CircleAvatar(
                             backgroundImage: AssetImage('images/histo.jpg'),

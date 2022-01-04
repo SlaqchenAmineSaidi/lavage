@@ -4,13 +4,45 @@ import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_laravel/services/reserver.dart';
 import 'package:provider/provider.dart';
 
-var reservations = Res.g;
+var reservations = Res.reservations;
 
 class MyBooking extends StatefulWidget {
   const MyBooking({Key key}) : super(key: key);
 
   @override
   _MyBookingState createState() => _MyBookingState();
+}
+
+String o, g, day, dtt, times;
+List<String> n = reservations.toString().split(" ");
+//print(n.length);
+String id_last_car = n[(n.length) - 15];
+int id_last = (n.length) - 15;
+//print(id_last_car);
+String re = id_last_car.replaceAll(',', '');
+int de = int.parse(re);
+int id_car = 0;
+String genders(int gender) {
+  String dtt = "", s = "", times = "";
+  for (id_car; id_car < de; id_car++) {
+    int first = id_last + 2 - id_car * 16;
+    o = n[first];
+    g = o.replaceAll(',', '');
+    s = s + " " + g;
+    dtt = dtt + " " + n[first + 2];
+    String da = n[first + 5] + " " + n[first + 6];
+    day = da.replaceAll(',', '');
+    times = times + " " + day;
+  }
+  if (gender == 1) {
+    return s;
+  }
+  if (gender == 2) {
+    return dtt;
+  }
+  if (gender == 3) {
+    return times;
+  }
 }
 
 class _MyBookingState extends State<MyBooking> {
@@ -34,7 +66,12 @@ class _MyBookingState extends State<MyBooking> {
             padding: EdgeInsets.all(10),
             alignment: Alignment.center,
             child: Text(
-              Res.g.toString(),
+              " " + genders(1),
+              //         for (id_car; id_car < de; id_car++) {
+              //   int first = id_last + 2 - id_car * 16;
+              //   o = n[first];
+              //   g = o.replaceAll(',', '');
+              // }
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -76,7 +113,8 @@ class _MyBookingState extends State<MyBooking> {
                 padding: EdgeInsets.all(10),
                 alignment: Alignment.topLeft,
                 child: Text(
-                  '15-05-2020',
+                  " " + genders(2),
+                  //Res.dat,
                   style: TextStyle(color: Colors.black, fontSize: 15.0),
                 ),
               ),
@@ -98,10 +136,7 @@ class _MyBookingState extends State<MyBooking> {
               Container(
                 padding: EdgeInsets.all(10),
                 alignment: Alignment.topLeft,
-                child: Text(
-                  '10:00 AM',
-                  style: TextStyle(color: Colors.black, fontSize: 13.0),
-                ),
+                child: Text(" " + genders(3)),
               ),
             ],
           ),

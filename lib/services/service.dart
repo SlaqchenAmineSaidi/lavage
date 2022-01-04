@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart' as Dio;
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel/services/dio.dart';
+import 'package:flutter_laravel/services/reserver.dart';
 
 class Serv extends ChangeNotifier {
   void reserver({Map creds2}) async {
@@ -11,5 +12,14 @@ class Serv extends ChangeNotifier {
     } catch (e) {
       print(e);
     }
+  }
+
+  void index() async {
+    Dio.Response response = await dio().get('/showen/${Res.d}');
+    print(response.data);
+    // List<String> n = _reservations.toString().split(" ");
+    // o = n[3];
+    // g = o.replaceAll(',', '');
+    //print(g);
   }
 }

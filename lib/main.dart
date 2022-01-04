@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_laravel/MyHistoryfulWidget.dart';
 import 'package:flutter_laravel/onboarding/Fonboarding.dart';
 import 'package:flutter_laravel/screens/WashMan.dart';
+import 'package:flutter_laravel/screens/history/Reviews.dart';
+import 'package:flutter_laravel/screens/history/his.dart';
 import 'package:flutter_laravel/screens/home_screen.dart';
 import 'package:flutter_laravel/services/Wash.dart';
 import 'package:flutter_laravel/services/auth.dart';
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
       title: 'Washing cars',
       home: OnBoarding(),
       //home: HomeScreen(),
+      //home: SalonsScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
