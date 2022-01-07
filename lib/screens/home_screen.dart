@@ -184,6 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 .index();
                             // await Provider.of<Serv>(context, listen: false)
                             //     .index();
+                            print(Serv.reservations);
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => MyHistoryfulWidget()));
                           },

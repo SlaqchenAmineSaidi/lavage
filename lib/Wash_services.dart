@@ -295,17 +295,17 @@ class _Wash_servicesState extends State<Wash_services> {
                         s = '';
                       }
                       if (isSelected1.toString() == '[true]') {
-                        d = "Interior Cleaning";
+                        d = ", Interior Cleaning";
                       } else {
                         d = '';
                       }
                       if (isSelected2.toString() == '[true]') {
-                        f = "Light Service";
+                        f = ", Light Service";
                       } else {
                         f = '';
                       }
                       if (isSelected3.toString() == '[true]') {
-                        g = "Engine Detailing";
+                        g = ", Engine Detailing";
                       } else {
                         g = '';
                       }

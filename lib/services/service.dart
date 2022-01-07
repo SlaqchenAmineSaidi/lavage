@@ -8,6 +8,7 @@ import 'auth.dart';
 class Serv extends ChangeNotifier {
   static List<dynamic> _reservations;
   static List<dynamic> get reservations => _reservations;
+  notifyListeners();
   // static List<dynamic> _price;
   // static List<dynamic> get price => _price;
   // static List<dynamic> _titles;
@@ -25,6 +26,9 @@ class Serv extends ChangeNotifier {
   Future<void> index() async {
     Dio.Response response = await dio().get('/show/${Auth.s}');
     //print(response.data);
+    if (_reservations != null) {
+      _reservations = null;
+    }
     _reservations = response.data;
     //print(response.data.toString().length);
     // _price = List.generate(

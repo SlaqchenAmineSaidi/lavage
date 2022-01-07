@@ -189,7 +189,7 @@ class _SignupScreenState extends State<Signup> {
                         width: double.infinity,
                         color: Colors.red,
                         child: MaterialButton(
-                          onPressed: () {
+                          onPressed: () async {
                             Map creds = {
                               'name': _nameController.text,
                               'email': _emailController.text,

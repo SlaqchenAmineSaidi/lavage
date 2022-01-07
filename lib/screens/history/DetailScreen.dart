@@ -8,61 +8,67 @@ class Reservation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       //backgroundColor: Colors.blueGrey[300],
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('images/l.jpg'), fit: BoxFit.cover)),
-          ),
-          SingleChildScrollView(
-            child: SafeArea(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(50),
-                      ),
+      body: Container(
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('images/l.jpg'), fit: BoxFit.cover)),
+            ),
+            SingleChildScrollView(
+              child: SafeArea(
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Text(
-                            'history of reservations',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,
-                                color: Colors.white),
-                          ),
-                          Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: List.generate(reservations.length,
-                                  (i) => StylistCard(reservations[i]))
+                    Container(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(50),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Text(
+                              'history of reservations',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30,
+                                  color: Colors.white),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: List.generate(reservations.length,
+                                      (i) => StylistCard(reservations[i]))
 
-                              // StylistCard(salons[0]),
-                              // StylistCard(salons[1]),
-                              // StylistCard(salons[2]),
-                              ),
-                        ],
+                                  // StylistCard(salons[0]),
+                                  // StylistCard(salons[1]),
+                                  // StylistCard(salons[2]),
+                                  ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

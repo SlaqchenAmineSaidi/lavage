@@ -154,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: MaterialButton(
                             color: Colors.blueAccent,
                             //color: Colors.transparent,
-                            onPressed: () {
+                            onPressed: () async {
                               Map creds = {
                                 'email': _emailController.text,
                                 'password': _passwordController.text,
