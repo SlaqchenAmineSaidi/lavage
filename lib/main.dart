@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_laravel/MyHistoryfulWidget.dart';
+import 'package:flutter_laravel/location.dart';
+import 'package:flutter_laravel/screens/history/MyHistoryfulWidget.dart';
+import 'package:flutter_laravel/maps.dart';
 import 'package:flutter_laravel/onboarding/Fonboarding.dart';
 import 'package:flutter_laravel/screens/WashMan.dart';
 import 'package:flutter_laravel/screens/history/Reviews.dart';
@@ -10,6 +12,7 @@ import 'package:flutter_laravel/services/Wash.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_laravel/services/reserver.dart';
 import 'package:flutter_laravel/services/service.dart';
+import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -32,9 +35,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Washing cars',
-      home: OnBoarding(),
+      //home: OnBoarding(),
       //home: DetailScreen(),
       //home: SalonsScreen(),
+      home: MapScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

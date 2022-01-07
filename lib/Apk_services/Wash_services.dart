@@ -32,7 +32,7 @@ class _Wash_servicesState extends State<Wash_services> {
       borderRadius: BorderRadius.all(Radius.circular(6.0)),
     ),
   );
-
+  String _price;
   @override
   void initState() {
     isSelected = [false];
@@ -271,7 +271,7 @@ class _Wash_servicesState extends State<Wash_services> {
               child: Container(
                 child: TextButton(
                   style: flatButtonStyle,
-                  onPressed: () {
+                  onPressed: () async {
                     int price() {
                       if (isSelected.toString() == '[true]') {
                         a += 20;
@@ -329,9 +329,10 @@ class _Wash_servicesState extends State<Wash_services> {
                               builder: (context) => HomeScreen()));
                     }
                     print(price);
+                    _price = price().toString();
                   },
                   child: Text(
-                    'Book',
+                    'Book ',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 ),

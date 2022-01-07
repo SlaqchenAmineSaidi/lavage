@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_laravel/Book_services.dart';
-import 'package:flutter_laravel/MyHistoryfulWidget.dart';
+import 'package:flutter_laravel/Apk_services/Book_services.dart';
+import 'package:flutter_laravel/screens/history/MyHistoryfulWidget.dart';
 import 'package:flutter_laravel/screens/WashMan.dart';
 import 'package:flutter_laravel/screens/login_screen.dart';
 import 'package:flutter_laravel/services/auth.dart';
