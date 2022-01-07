@@ -6,6 +6,8 @@ import 'package:flutter_laravel/services/dio.dart';
 class Res extends ChangeNotifier {
   static List<dynamic> _reservations;
   static List<dynamic> get reservations => _reservations;
+  static List<dynamic> _ids;
+  static List<dynamic> get ids => _ids;
   String id;
   String o;
   String a;
@@ -66,36 +68,48 @@ class Res extends ChangeNotifier {
   Future<void> index() async {
     _token = Auth.token;
     print(_token);
-    await dio()
-        .get('/showen/${Auth.s}',
-            options: Dio.Options(headers: {'Authorization': 'Bearer $_token'}))
-        .then((value) {
-      _reservations = value.data;
-      print(_reservations);
-      List<String> n = _reservations.toString().split(" ");
-      //print(n.length);
-      String id_last_car = n[(n.length) - 15];
-      int id_last = (n.length) - 15;
-      //print(id_last_car);
-      String re = id_last_car.replaceAll(',', '');
-      int de = int.parse(re);
-      print(de);
-      int id_car = 0;
-      for (id_car; id_car < de; id_car++) {
-        int first = id_last + 2 - id_car * 16;
-        o = n[first];
-        //print(o);
-        String dt = n[first + 2];
-        //dat = dt.replaceAll(',', '');
-        print(dt);
-        String da = n[first + 5] + " " + n[first + 6];
-        //print(da);
-        g = o.replaceAll(',', '');
-        print(g);
-        day = da.replaceAll(',', '');
-        print(day);
-      }
-    });
+    // print(Auth.s);
+    //Dio.Response response = await dio().get('/showen/${Auth.s}');
+    //print(response.data);
+    //_reservations = response.data;
+
+    //_ids = List.generate(reservations.length, (i) => reservations[i]['id']);
+    //   .then((value) {
+    // _reservations = value.data;
+    // int id_car = 0;
+    // print(_reservations);
+    // List<String> n = _reservations.toString().split(" ");
+    //print(n.length);
+    // String id_last_car = n[(n.length) - 15];
+    // int id_last = (n.length) - 15;
+    // //print(id_last_car);
+    // String re = id_last_car.replaceAll(',', '');
+    // int de = int.parse(re);
+    // print(de - 1);
+    // for (id_car; id_car < de; id_car++) {
+    //   print(value.data[0]['reservations'][id_car]['gender']);
+    // }
+    // for (id_car; id_car < de; id_car++) {
+    //   print(value.data[0]['reservations'][id_car]['day']);
+    // }
+    // for (id_car; id_car < de; id_car++) {
+    //   print(value.data[0]['reservations'][id_car]['time']);
+    // }
+    // for (id_car; id_car < de; id_car++) {
+    //   int first = id_last + 2 - id_car * 16;
+    //   o = n[first];
+    //   //print(o);
+    //   String dt = n[first + 2];
+    //   //dat = dt.replaceAll(',', '');
+    //   print(dt);
+    //   String da = n[first + 5] + " " + n[first + 6];
+    //   //print(da);
+    //   g = o.replaceAll(',', '');
+    //   print(g);
+    //   day = da.replaceAll(',', '');
+    //   print(day);
+    // }
+    // }
   }
   // void index() async {
   //   Dio.Response response = await dio().get('/showen/${Auth.s}',

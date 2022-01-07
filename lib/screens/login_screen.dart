@@ -150,8 +150,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         Container(
                           width: double.infinity,
-                          color: Colors.red,
+                          color: Colors.blueAccent,
                           child: MaterialButton(
+                            color: Colors.blueAccent,
                             //color: Colors.transparent,
                             onPressed: () {
                               Map creds = {

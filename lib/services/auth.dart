@@ -9,6 +9,8 @@ class Auth extends ChangeNotifier {
   User _user;
   static String _token;
   static int s;
+  static int _role;
+  static int get role => _role;
 
   bool get authenticated => _isLoggedIn;
   User get user => _user;
@@ -64,6 +66,8 @@ class Auth extends ChangeNotifier {
             options: Dio.Options(headers: {'Authorization': 'Bearer $token'}));
         this._isLoggedIn = true;
         this._user = User.fromJson(response.data);
+        _role = response.data['role'];
+        print(response.data['role']);
         String a = response.data.toString();
         List<String> l = a.split(" ");
         String id = l[1];

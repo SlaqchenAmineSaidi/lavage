@@ -5,6 +5,7 @@ import 'package:flutter_laravel/screens/WashMan.dart';
 import 'package:flutter_laravel/screens/login_screen.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_laravel/services/reserver.dart';
+import 'package:flutter_laravel/services/service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 
@@ -179,8 +180,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: () async {
-                            await Provider.of<Res>(context, listen: false)
+                            await Provider.of<Serv>(context, listen: false)
                                 .index();
+                            // await Provider.of<Serv>(context, listen: false)
+                            //     .index();
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => MyHistoryfulWidget()));
                           },
@@ -244,44 +247,93 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             );
           } else {
-            return ListView(
-              children: [
-                DrawerHeader(
-                  child: Column(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 30,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        auth.user.name,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        auth.user.email,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
+            if (Auth.role == 1) {
+              return ListView(
+                children: [
+                  DrawerHeader(
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 30,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          auth.user.name,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          auth.user.email,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                    ),
                   ),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
+                  ListTile(
+                    title: Text('Logout'),
+                    leading: Icon(Icons.logout),
+                    onTap: () {
+                      Provider.of<Auth>(context, listen: false).logout();
+                    },
                   ),
-                ),
-                ListTile(
-                  title: Text('Logout'),
-                  leading: Icon(Icons.logout),
-                  onTap: () {
-                    Provider.of<Auth>(context, listen: false).logout();
-                  },
-                ),
-              ],
-            );
+                ],
+              );
+            } else {
+              return ListView(
+                children: [
+                  DrawerHeader(
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 30,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          auth.user.name,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          auth.user.email,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('Contact us'),
+                    leading: Icon(Icons.contact_support),
+                    onTap: () {
+                      // Navigator.of(context).push(
+                      //     MaterialPageRoute(builder: (context) => SalonForm()));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('Logout'),
+                    leading: Icon(Icons.logout),
+                    onTap: () {
+                      Provider.of<Auth>(context, listen: false).logout();
+                    },
+                  ),
+                ],
+              );
+            }
           }
         }),
       ),

@@ -193,6 +193,8 @@ class _WashMan extends State<WashMan> {
                                   if (_formKey.currentState.validate()) {
                                     Provider.of<Wash>(context, listen: false)
                                         .washing(creds2: creds2);
+                                    Provider.of<Auth>(context, listen: false)
+                                        .update(creds: creds2);
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
