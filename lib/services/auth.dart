@@ -45,13 +45,11 @@ class Auth extends ChangeNotifier {
     }
   }
 
-  void update({Map creds}) async {
-    print(creds);
+  void update() async {
     try {
-      Dio.Response response = await dio().put('/update', data: creds);
+      Dio.Response response = await dio().put('/update',
+          options: Dio.Options(headers: {'Authorization': 'Bearer $_token'}));
       print(response.data.toString());
-      String token = response.data.toString();
-      this.tryToken(token: token);
     } catch (e) {
       print(e);
     }

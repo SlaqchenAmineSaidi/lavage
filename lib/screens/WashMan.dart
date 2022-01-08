@@ -194,7 +194,7 @@ class _WashMan extends State<WashMan> {
                                     Provider.of<Wash>(context, listen: false)
                                         .washing(creds2: creds2);
                                     Provider.of<Auth>(context, listen: false)
-                                        .update(creds: creds2);
+                                        .update();
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(

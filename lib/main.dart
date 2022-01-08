@@ -35,10 +35,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Washing cars',
-      //home: OnBoarding(),
+      home: OnBoarding(),
       //home: DetailScreen(),
       //home: SalonsScreen(),
-      home: MapScreen(),
+      //home: MapScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

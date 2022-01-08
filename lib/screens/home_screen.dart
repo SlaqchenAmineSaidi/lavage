@@ -279,6 +279,38 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   ListTile(
+                    title: Text('Home'),
+                    leading: Icon(Icons.home),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => HomeScreen()));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('My History'),
+                    leading: Icon(Icons.history),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => MyHistoryfulWidget()));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('Become Wash-man'),
+                    leading: Icon(Icons.wash),
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => WashMan()));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('Contact us'),
+                    leading: Icon(Icons.contact_support),
+                    onTap: () {
+                      // Navigator.of(context).push(
+                      //     MaterialPageRoute(builder: (context) => SalonForm()));
+                    },
+                  ),
+                  ListTile(
                     title: Text('Logout'),
                     leading: Icon(Icons.logout),
                     onTap: () {
@@ -316,6 +348,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: BoxDecoration(
                       color: Colors.blue,
                     ),
+                  ),
+                  ListTile(
+                    title: Text('Home'),
+                    leading: Icon(Icons.home),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => HomeScreen()));
+                    },
                   ),
                   ListTile(
                     title: Text('Contact us'),
