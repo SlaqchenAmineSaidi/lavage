@@ -23,7 +23,7 @@ class _locationState extends State<location> {
     var long = position.longitude;
     longit = long;
     setState(() {
-      locationMessage = "Position: laptitude $lap, longitude $long";
+      locationMessage = "Position: laptitude $lapti, longitude $longit";
     });
   }
 
@@ -43,8 +43,8 @@ class _locationState extends State<location> {
               color: Colors.black,
               onPressed: () {
                 getCurrentPosition();
-                // Navigator.of(context)
-                //     .push(MaterialPageRoute(builder: (context) => MapScreen()));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => MapScreen()));
               },
             ),
           ),

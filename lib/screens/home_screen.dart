@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel/Apk_services/Book_services.dart';
+import 'package:flutter_laravel/Apk_services/Wash_services.dart';
+import 'package:flutter_laravel/Apk_services/services.dart';
 import 'package:flutter_laravel/screens/history/MyHistoryfulWidget.dart';
 import 'package:flutter_laravel/screens/WashMan.dart';
 import 'package:flutter_laravel/screens/login_screen.dart';
@@ -8,6 +10,8 @@ import 'package:flutter_laravel/services/reserver.dart';
 import 'package:flutter_laravel/services/service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
+
+import '../icon_card.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -36,201 +40,142 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Washing Car'),
       ),
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('images/login.jpg'), fit: BoxFit.cover)),
-          ),
-          SingleChildScrollView(
-            scrollDirection: Axis.vertical,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Container(
+            color: Colors.white,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(20.0),
-                  child: Center(
-                      child: Container(
-                    child: Image(
-                      image: AssetImage(
-                        'images/Lavage_logo.png',
-                      ),
-                      width: 120.0,
+              children: <Widget>[
+                SizedBox(
+                  height: 30,
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: RichText(
+                      text: TextSpan(
+                          children: [
+                            TextSpan(
+                                text: 'Hello, ',
+                                style: TextStyle(
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.blueAccent)),
+                            TextSpan(text: 'what are you\nlooking for?')
+                          ],
+                          style: TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black)),
                     ),
-                  )),
+                  ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      color: Colors.transparent,
-                      child: Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => BookService()));
-                            },
-                            child: CircleAvatar(
-                              backgroundImage: AssetImage('images/im_log.jpg'),
-                              radius: 65.0,
-                            ),
-                          )),
-                    ),
-                    SizedBox(
-                      width: 75.0,
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => WashMan()));
-                          },
-                          child: CircleAvatar(
-                            backgroundImage: AssetImage('images/im_login.png'),
-                            radius: 65.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                RichText(
+                    softWrap: true,
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                        style: TextStyle(color: Colors.black, fontSize: 18),
+                        children: [
+                          TextSpan(text: "The washing service is near you\n"),
+                        ])),
+                RichText(
+                    softWrap: true,
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                        style: TextStyle(color: Colors.black, fontSize: 18),
+                        children: [
+                          TextSpan(
+                              text:
+                                  "You can easely have a reservation for a washing service in one click"),
+                        ])),
+                SizedBox(
+                  height: 30,
                 ),
                 Row(
-                  children: [
-                    SizedBox(
-                      width: 40,
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          border: Border.all(
-                              color: Colors.black, // Set border color
-                              width: 3.0), // Set border width
-                          borderRadius: BorderRadius.all(Radius.circular(
-                              10.0)), // Set rounded corner radius
-                          boxShadow: [
-                            BoxShadow(
-                                blurRadius: 5,
-                                color: Colors.blue[100],
-                                offset: Offset(1, 3))
-                          ] // Make rounded corner of border
-                          ),
-                      child: Text(
-                        "Book service",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 40,
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          border: Border.all(
-                              color: Colors.black, // Set border color
-                              width: 3.0), // Set border width
-                          borderRadius: BorderRadius.all(Radius.circular(
-                              10.0)), // Set rounded corner radius
-                          boxShadow: [
-                            BoxShadow(
-                                blurRadius: 5,
-                                color: Colors.blue[100],
-                                offset: Offset(1, 3))
-                          ] // Make rounded corner of border
-                          ),
-                      child: Text(
-                        "Become A Wash-Man",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 17.0,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    )
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    InkWell(
+                        child: IconCard(
+                          iconData: Icons.home,
+                          text: 'Home',
+                        ),
+                        onTap: () async {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                        }),
+                    InkWell(
+                        child: IconCard(
+                          iconData: Icons.settings_suggest_outlined,
+                          text: 'Services',
+                        ),
+                        onTap: () async {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => service()));
+                        }),
+                    InkWell(
+                        child: IconCard(
+                          iconData: Icons.contact_support,
+                          text: 'About us',
+                        ),
+                        onTap: () async {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                        }),
                   ],
                 ),
                 SizedBox(
-                  height: 15.0,
+                  height: 10,
                 ),
                 Row(
-                  children: [
-                    SizedBox(
-                      width: 140,
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () async {
-                            await Provider.of<Serv>(context, listen: false)
-                                .index();
-                            // await Provider.of<Serv>(context, listen: false)
-                            //     .index();
-                            print(Serv.reservations);
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => MyHistoryfulWidget()));
-                          },
-                          child: CircleAvatar(
-                            backgroundImage: AssetImage('images/histo.jpg'),
-                            radius: 65.0,
-                          ),
-                        ),
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'Best Experiences',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
                       ),
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.more_horiz,
+                        color: Colors.black,
+                      ),
+                      onPressed: () {},
                     ),
                   ],
                 ),
-                Row(children: [
-                  SizedBox(
-                    width: 150,
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        border: Border.all(
-                            color: Colors.black, // Set border color
-                            width: 3.0), // Set border width
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(10.0)), // Set rounded corner radius
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 5,
-                              color: Colors.blue[100],
-                              offset: Offset(1, 3))
-                        ] // Make rounded corner of border
+                SingleChildScrollView(
+                  child: Column(mainAxisSize: MainAxisSize.min, children: [
+                    SizedBox(
+                      height: 200,
+                      child: ListView.builder(
+                        itemCount: 4,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => Container(
+                          height: 400,
+                          width: 250,
+                          margin: EdgeInsets.all(5),
+                          child: Center(
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.asset('images/${index + 2}.PNG')),
+                          ),
+                          color: Colors.grey[50],
                         ),
-                    child: Text(
-                      "My History",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  )
-                ]),
+                  ]),
+                ),
               ],
             ),
           ),
-        ],
+        ),
       ),
       drawer: Drawer(
         child: Consumer<Auth>(builder: (context, auth, child) {
@@ -289,7 +234,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ListTile(
                     title: Text('My History'),
                     leading: Icon(Icons.history),
-                    onTap: () {
+                    onTap: () async {
+                      await Provider.of<Serv>(context, listen: false).index();
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MyHistoryfulWidget()));
                     },
@@ -305,10 +251,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ListTile(
                     title: Text('Contact us'),
                     leading: Icon(Icons.contact_support),
-                    onTap: () {
-                      // Navigator.of(context).push(
-                      //     MaterialPageRoute(builder: (context) => SalonForm()));
-                    },
+                    onTap: () {},
                   ),
                   ListTile(
                     title: Text('Logout'),

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/Apk_services/Book_services.dart';
+import 'package:flutter_laravel/Apk_services/Wash_services.dart';
+import 'package:flutter_laravel/Apk_services/services.dart';
 import 'package:flutter_laravel/location.dart';
+import 'package:flutter_laravel/models/service.dart';
 import 'package:flutter_laravel/screens/history/MyHistoryfulWidget.dart';
 import 'package:flutter_laravel/maps.dart';
 import 'package:flutter_laravel/onboarding/Fonboarding.dart';
@@ -38,7 +42,8 @@ class MyApp extends StatelessWidget {
       home: OnBoarding(),
       //home: DetailScreen(),
       //home: SalonsScreen(),
-      //home: MapScreen(),
+      //home: location(),
+      //home: service(),
       debugShowCheckedModeBanner: false,
     );
   }

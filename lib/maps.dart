@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_laravel/location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
@@ -15,7 +14,7 @@ class MapScreenState extends State<MapScreen> {
   var location = new Location();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(34.010155, -4.984155),
+    target: LatLng(31.9271167, -4.44374),
     zoom: 14.4746,
   );
 
@@ -35,11 +34,11 @@ class MapScreenState extends State<MapScreen> {
           _controller.complete(controller);
         },
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
-      ),
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: _goToTheLake,
+      //   label: Text('To the lake!'),
+      //   icon: Icon(Icons.directions_boat),
+      // ),
     );
   }
 
