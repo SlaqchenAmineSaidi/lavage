@@ -143,9 +143,10 @@ class DetailScreen extends StatelessWidget {
                           Text(
                             stylist['serviceName'],
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 38,
+                                fontFamily: 'Cursive',
+                                color: Colors.purple[900]),
                           ),
                         ],
                       ),

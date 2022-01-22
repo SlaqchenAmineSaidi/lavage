@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_laravel/Apk_services/Book_services.dart';
 import 'package:flutter_laravel/Apk_services/Wash_services.dart';
 import 'package:flutter_laravel/Apk_services/services.dart';
+import 'package:flutter_laravel/screens/aboutus.dart';
 import 'package:flutter_laravel/screens/history/MyHistoryfulWidget.dart';
 import 'package:flutter_laravel/screens/WashMan.dart';
 import 'package:flutter_laravel/screens/login_screen.dart';
@@ -100,12 +101,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <Widget>[
                     InkWell(
                         child: IconCard(
-                          iconData: Icons.home,
-                          text: 'Home',
+                          iconData: Icons.book,
+                          text: 'Booking',
                         ),
                         onTap: () async {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
+                              builder: (context) => BookService()));
                         }),
                     InkWell(
                         child: IconCard(
@@ -123,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         onTap: () async {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
+                              builder: (context) => AboutUs()));
                         }),
                   ],
                 ),
