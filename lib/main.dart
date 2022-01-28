@@ -13,7 +13,9 @@ import 'package:flutter_laravel/screens/history/DetailScreen.dart';
 import 'package:flutter_laravel/screens/home_screen.dart';
 import 'package:flutter_laravel/screens/history/DetailScreen.dart';
 import 'package:flutter_laravel/services/Wash.dart';
+import 'package:flutter_laravel/services/adresse.dart';
 import 'package:flutter_laravel/services/auth.dart';
+import 'package:flutter_laravel/services/comment.dart';
 import 'package:flutter_laravel/services/reserver.dart';
 import 'package:flutter_laravel/services/service.dart';
 import 'package:location/location.dart';
@@ -27,6 +29,8 @@ void main() {
         ChangeNotifierProvider(create: (context) => Res()),
         ChangeNotifierProvider(create: (context) => Serv()),
         ChangeNotifierProvider(create: (context) => Wash()),
+        ChangeNotifierProvider(create: (context) => Adre()),
+        ChangeNotifierProvider(create: (context) => Com()),
       ],
       child: MyApp(),
     ),

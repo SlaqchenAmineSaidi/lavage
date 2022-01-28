@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/location.dart';
 import 'package:flutter_laravel/models/reservation.dart';
 import 'package:flutter_laravel/screens/WashMan.dart';
 import 'package:flutter_laravel/screens/history/MyHistoryfulWidget.dart';
@@ -326,7 +327,7 @@ class _Wash_servicesState extends State<Wash_services> {
                     Provider.of<Serv>(context, listen: false)
                         .reserver(creds2: creds2);
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                        MaterialPageRoute(builder: (context) => location()));
                   }
                   print(price);
                   _price = price().toString();

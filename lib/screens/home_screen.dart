@@ -250,9 +250,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                   ListTile(
-                    title: Text('Contact us'),
+                    title: Text('About us'),
                     leading: Icon(Icons.contact_support),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => AboutUs()));
+                    },
                   ),
                   ListTile(
                     title: Text('Logout'),

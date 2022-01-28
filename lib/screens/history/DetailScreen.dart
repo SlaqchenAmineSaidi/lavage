@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/screens/aboutus.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_laravel/services/service.dart';
 import 'package:provider/provider.dart';
@@ -203,11 +204,11 @@ class Reservation extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    title: Text('Contact us'),
+                    title: Text('About us'),
                     leading: Icon(Icons.contact_support),
                     onTap: () {
-                      // Navigator.of(context).push(
-                      //     MaterialPageRoute(builder: (context) => SalonForm()));
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => AboutUs()));
                     },
                   ),
                   ListTile(

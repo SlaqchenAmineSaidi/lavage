@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel/maps.dart';
+import 'package:flutter_laravel/services/adresse.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:provider/provider.dart';
 
 class location extends StatefulWidget {
   const location({Key key}) : super(key: key);
@@ -43,8 +45,6 @@ class _locationState extends State<location> {
               color: Colors.black,
               onPressed: () {
                 getCurrentPosition();
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => MapScreen()));
               },
             ),
           ),
@@ -52,6 +52,21 @@ class _locationState extends State<location> {
             height: 15,
           ),
           Text(locationMessage),
+          FlatButton(
+            child: Text('press'),
+            color: Colors.indigo,
+            onPressed: () {
+              getCurrentPosition();
+              Map creds3 = {
+                'adress2': lapti,
+                'adress1': longit,
+              };
+              Provider.of<Adre>(context, listen: false).adresse(creds3: creds3);
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => MapScreen()));
+              print(creds3);
+            },
+          ),
         ],
       ),
     );
