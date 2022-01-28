@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_laravel/screens/home_screen.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_laravel/services/comment.dart';
+import 'package:flutter_laravel/services/complain.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
-class Reviews extends StatefulWidget {
-  const Reviews({Key key}) : super(key: key);
-
+class Complaings extends StatefulWidget {
+  const Complaings({Key key}) : super(key: key);
   @override
-  _ReviewsState createState() => _ReviewsState();
+  _ComplaingsState createState() => _ComplaingsState();
+  static String id;
 }
 
-double _rating;
-
-class _ReviewsState extends State<Reviews> {
-  TextEditingController _commentController = TextEditingController();
+class _ComplaingsState extends State<Complaings> {
+  TextEditingController _complainController = TextEditingController();
+  TextEditingController _washmanController = TextEditingController();
   var now = DateTime.now();
   @override
   Widget build(BuildContext context) {
@@ -27,20 +27,20 @@ class _ReviewsState extends State<Reviews> {
           scrollDirection: Axis.vertical,
           child: Stack(children: <Widget>[
             Image.asset(
-              'images/about.png',
+              'images/complain.jpg',
               fit: BoxFit.fill,
             ),
             Column(
               children: [
                 SizedBox(
-                  height: 263,
+                  height: 240,
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Container(
                     padding: EdgeInsets.all(10),
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height / 3,
+                    height: MediaQuery.of(context).size.height / 3 + 20.0,
                     color: Colors.blue[100],
                     child: Consumer<Auth>(builder: (context, auth, child) {
                       return Column(
@@ -63,43 +63,44 @@ class _ReviewsState extends State<Reviews> {
                               Text(
                                 auth.user.name,
                                 style: TextStyle(
-                                  color: Colors.blue[900],
-                                  fontWeight: FontWeight.w600,
-                                ),
+                                    color: Colors.blue[900],
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 18.0),
                               ),
                               SizedBox(
                                 width: 30.0,
                               ),
-                              RatingBar.builder(
-                                initialRating: 0,
-                                minRating: 1,
-                                direction: Axis.horizontal,
-                                allowHalfRating: true,
-                                itemCount: 5,
-                                itemPadding:
-                                    EdgeInsets.symmetric(horizontal: 2.0),
-                                itemBuilder: (context, _) => Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                ),
-                                onRatingUpdate: (rating) {
-                                  setState(() {
-                                    _rating = rating;
-                                  });
-                                },
-                                updateOnDrag: true,
-                              ),
                             ],
                           ),
                           TextFormField(
-                            controller: _commentController,
+                            controller: _washmanController,
                             validator: (value) => value.isEmpty
-                                ? 'please enter your comment'
+                                ? 'please enter the Wash-man ID'
+                                : null,
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.next,
+                            decoration: InputDecoration(
+                              labelText: 'Wash-Man Id',
+                              prefixIcon: Icon(
+                                Icons.comment,
+                              ),
+                              fillColor: Colors.transparent,
+                              errorStyle: TextStyle(
+                                fontSize: 15,
+                                //backgroundColor: Colors.transparent,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          TextFormField(
+                            controller: _complainController,
+                            validator: (value) => value.isEmpty
+                                ? 'please enter your complain'
                                 : null,
                             keyboardType: TextInputType.name,
                             textInputAction: TextInputAction.next,
                             decoration: InputDecoration(
-                              labelText: 'Comment',
+                              labelText: 'Complain',
                               prefixIcon: Icon(
                                 Icons.comment,
                               ),
@@ -116,18 +117,18 @@ class _ReviewsState extends State<Reviews> {
                           ),
                           FlatButton(
                             onPressed: () async {
-                              await Provider.of<Com>(context, listen: false);
-                              Map creds4 = {
-                                'rating': _rating,
-                                'comment': _commentController.text,
+                              Complaings.id = _washmanController.text;
+                              Map creds5 = {
+                                'complain': _complainController.text,
                               };
-                              Provider.of<Com>(context, listen: false)
-                                  .comment(creds4: creds4);
+                              Provider.of<Comp>(context, listen: false)
+                                  .complain(creds5: creds5);
+                              Provider.of<Auth>(context, listen: false).updat();
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => HomeScreen()));
-                              print(creds4);
+                              print(creds5);
                             },
-                            child: Text('Add you comment',
+                            child: Text('Send Complain',
                                 style: TextStyle(color: Colors.blue)),
                             textColor: Colors.white,
                             shape: RoundedRectangleBorder(

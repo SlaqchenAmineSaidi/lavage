@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart' as Dio;
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel/models/user.dart';
+import 'package:flutter_laravel/screens/history/Complaing.dart';
+import 'package:flutter_laravel/services/complain.dart';
 import 'package:flutter_laravel/services/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -49,6 +51,17 @@ class Auth extends ChangeNotifier {
     try {
       Dio.Response response = await dio().put('/update',
           options: Dio.Options(headers: {'Authorization': 'Bearer $_token'}));
+      print(response.data.toString());
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void updat() async {
+    try {
+      Dio.Response response = await dio().put(
+        '/updat/${Complaings.id}',
+      );
       print(response.data.toString());
     } catch (e) {
       print(e);

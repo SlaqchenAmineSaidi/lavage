@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/screens/history/Complaing.dart';
 import 'package:flutter_laravel/screens/history/DetailScreen.dart';
 import 'package:flutter_laravel/screens/history/Reviews.dart';
 import 'package:flutter_laravel/services/auth.dart';
@@ -38,10 +39,7 @@ class _MyHistoryfulWidgetState extends State<MyHistoryfulWidget> {
   static List<Widget> _widgetOptions = <Widget>[
     Reservation(),
     Reviews(),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    Complaings(),
   ];
 
   void _onItemTapped(int index) {
@@ -68,12 +66,12 @@ class _MyHistoryfulWidgetState extends State<MyHistoryfulWidget> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.reviews),
-            label: 'Reviews',
+            label: 'Review',
             backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.comment),
-            label: 'Comments',
+            label: 'Complain',
             backgroundColor: Colors.black,
           ),
         ],

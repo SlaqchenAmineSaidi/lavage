@@ -4,6 +4,7 @@ import 'package:flutter_laravel/Apk_services/Wash_services.dart';
 import 'package:flutter_laravel/Apk_services/services.dart';
 import 'package:flutter_laravel/location.dart';
 import 'package:flutter_laravel/models/service.dart';
+import 'package:flutter_laravel/screens/history/Complaing.dart';
 import 'package:flutter_laravel/screens/history/MyHistoryfulWidget.dart';
 import 'package:flutter_laravel/maps.dart';
 import 'package:flutter_laravel/onboarding/Fonboarding.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_laravel/services/Wash.dart';
 import 'package:flutter_laravel/services/adresse.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_laravel/services/comment.dart';
+import 'package:flutter_laravel/services/complain.dart';
 import 'package:flutter_laravel/services/reserver.dart';
 import 'package:flutter_laravel/services/service.dart';
 import 'package:location/location.dart';
@@ -31,6 +33,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => Wash()),
         ChangeNotifierProvider(create: (context) => Adre()),
         ChangeNotifierProvider(create: (context) => Com()),
+        ChangeNotifierProvider(create: (context) => Comp()),
       ],
       child: MyApp(),
     ),
@@ -47,7 +50,7 @@ class MyApp extends StatelessWidget {
       //home: DetailScreen(),
       //home: SalonsScreen(),
       //home: location(),
-      //home: service(),
+      //home: Complaings(),
       debugShowCheckedModeBanner: false,
     );
   }
