@@ -7,12 +7,15 @@ import 'package:flutter_laravel/screens/history/MyHistoryfulWidget.dart';
 import 'package:flutter_laravel/screens/WashMan.dart';
 import 'package:flutter_laravel/screens/login_screen.dart';
 import 'package:flutter_laravel/services/auth.dart';
+import 'package:flutter_laravel/services/comment.dart';
 import 'package:flutter_laravel/services/reserver.dart';
 import 'package:flutter_laravel/services/service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 
 import '../icon_card.dart';
+
+var comments = Com.comments;
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -173,6 +176,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ]),
                 ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'Comments :',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: List.generate(
+                        comments.length, (i) => StylistCard(comments[i]))),
               ],
             ),
           ),
@@ -325,6 +347,85 @@ class _HomeScreenState extends State<HomeScreen> {
           }
         }),
       ),
+    );
+  }
+}
+
+class StylistCard extends StatelessWidget {
+  final stylist;
+  StylistCard(this.stylist);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            padding: EdgeInsets.all(20),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 6,
+            color: Colors.blue[800],
+            child: Column(
+              children: <Widget>[
+                Text(
+                  stylist['created_at'].toString().substring(0, 10),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[850],
+                  ),
+                ),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      "Username: " + stylist['user']['name'],
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 140,
+                    ),
+                    Text(
+                      "Rating: ",
+                      style: TextStyle(
+                        color: Color(0xffFF8573),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Icon(
+                      Icons.star,
+                      color: Color(0xffFF8573),
+                      size: 16,
+                    ),
+                    Text(
+                      stylist['rating'],
+                      style: TextStyle(
+                        color: Color(0xffFF8573),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  stylist['comment'],
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 3.0,
+        ),
+      ],
     );
   }
 }

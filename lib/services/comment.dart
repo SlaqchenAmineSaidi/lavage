@@ -28,7 +28,7 @@ class Com extends ChangeNotifier {
   }
 
   Future<void> index() async {
-    Dio.Response response = await dio().get('/showComments/${Auth.s}');
+    Dio.Response response = await dio().get('/showComments/');
     _comments = response.data;
   }
 }

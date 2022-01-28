@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_laravel/screens/home_screen.dart';
 import 'package:flutter_laravel/screens/signup.dart';
 import 'package:flutter_laravel/services/auth.dart';
+import 'package:flutter_laravel/services/comment.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -155,6 +156,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Colors.blueAccent,
                             //color: Colors.transparent,
                             onPressed: () async {
+                              await Provider.of<Com>(context, listen: false)
+                                  .index();
                               Map creds = {
                                 'email': _emailController.text,
                                 'password': _passwordController.text,
