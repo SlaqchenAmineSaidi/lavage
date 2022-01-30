@@ -116,7 +116,8 @@ class _ReviewsState extends State<Reviews> {
                           ),
                           FlatButton(
                             onPressed: () async {
-                              await Provider.of<Com>(context, listen: false);
+                              await Provider.of<Com>(context, listen: false)
+                                  .index();
                               Map creds4 = {
                                 'rating': _rating,
                                 'comment': _commentController.text,

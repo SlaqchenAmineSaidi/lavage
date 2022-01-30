@@ -3,6 +3,7 @@ import 'package:flutter_laravel/screens/history/Complaing.dart';
 import 'package:flutter_laravel/screens/history/DetailScreen.dart';
 import 'package:flutter_laravel/screens/history/Reviews.dart';
 import 'package:flutter_laravel/services/auth.dart';
+import 'package:flutter_laravel/services/service.dart';
 import 'package:provider/provider.dart';
 
 import '../WashMan.dart';
@@ -136,7 +137,8 @@ class _MyHistoryfulWidgetState extends State<MyHistoryfulWidget> {
                   ListTile(
                     title: Text('My History'),
                     leading: Icon(Icons.history),
-                    onTap: () {
+                    onTap: () async {
+                      await Provider.of<Serv>(context, listen: false).index();
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MyHistoryfulWidget()));
                     },
@@ -162,6 +164,8 @@ class _MyHistoryfulWidgetState extends State<MyHistoryfulWidget> {
                     leading: Icon(Icons.logout),
                     onTap: () {
                       Provider.of<Auth>(context, listen: false).logout();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LoginScreen()));
                     },
                   ),
                 ],
@@ -217,6 +221,8 @@ class _MyHistoryfulWidgetState extends State<MyHistoryfulWidget> {
                     leading: Icon(Icons.logout),
                     onTap: () {
                       Provider.of<Auth>(context, listen: false).logout();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LoginScreen()));
                     },
                   ),
                 ],

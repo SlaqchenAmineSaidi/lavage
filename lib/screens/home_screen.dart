@@ -284,6 +284,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     leading: Icon(Icons.logout),
                     onTap: () {
                       Provider.of<Auth>(context, listen: false).logout();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LoginScreen()));
                     },
                   ),
                 ],
@@ -339,6 +341,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     leading: Icon(Icons.logout),
                     onTap: () {
                       Provider.of<Auth>(context, listen: false).logout();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LoginScreen()));
                     },
                   ),
                 ],
@@ -364,7 +368,7 @@ class StylistCard extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(20),
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height / 6,
+            height: MediaQuery.of(context).size.height / 5,
             color: Colors.blue[800],
             child: Column(
               children: <Widget>[
@@ -385,7 +389,7 @@ class StylistCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 140,
+                      width: 90,
                     ),
                     Text(
                       "Rating: ",

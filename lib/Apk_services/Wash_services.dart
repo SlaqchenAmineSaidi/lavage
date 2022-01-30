@@ -398,7 +398,8 @@ class _Wash_servicesState extends State<Wash_services> {
                   ListTile(
                     title: Text('My History'),
                     leading: Icon(Icons.history),
-                    onTap: () {
+                    onTap: () async {
+                      await Provider.of<Serv>(context, listen: false).index();
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MyHistoryfulWidget()));
                     },
@@ -479,6 +480,8 @@ class _Wash_servicesState extends State<Wash_services> {
                     leading: Icon(Icons.logout),
                     onTap: () {
                       Provider.of<Auth>(context, listen: false).logout();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LoginScreen()));
                     },
                   ),
                 ],

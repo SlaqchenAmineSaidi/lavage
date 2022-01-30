@@ -96,10 +96,29 @@ class _BookServiceState extends State<BookService> {
                       selectedColor: Colors.white,
                       borderRadius: BorderRadius.circular(0),
                       children: [
-                        Image.asset('images/caar.png', width: 100.0),
-                        Image.asset('images/buus.PNG', width: 100.0),
-                        Image.asset('images/truck_logo.jpg', width: 100.0),
-                        Image.asset('images/moto_logo.png', width: 100.0),
+                        CircleAvatar(
+                          child: Image.asset('images/caar.png'),
+                          backgroundColor: Colors.white,
+                          radius: 50.0,
+                        ),
+                        CircleAvatar(
+                          child: Image.asset('images/buus.PNG'),
+                          backgroundColor: Colors.white,
+                          radius: 50.0,
+                        ),
+                        CircleAvatar(
+                          child: Image.asset('images/truck_logo.jpg'),
+                          backgroundColor: Colors.white,
+                          radius: 50.0,
+                        ),
+                        CircleAvatar(
+                          child: Image.asset('images/moto_logo.png'),
+                          backgroundColor: Colors.white,
+                          radius: 50.0,
+                        ),
+                        // Image.asset('images/buus.PNG', width: 100.0),
+                        // Image.asset('images/truck_logo.jpg', width: 100.0),
+                        // Image.asset('images/moto_logo.png', width: 100.0),
                       ],
                       onPressed: (int index) {
                         setState(() {
