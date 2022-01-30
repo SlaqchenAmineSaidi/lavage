@@ -33,42 +33,96 @@ class _locationState extends State<location> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Location'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: FlatButton(
-              child: Text('press'),
-              color: Colors.black,
-              onPressed: () {
-                getCurrentPosition();
-              },
+        appBar: AppBar(
+          title: Text('Location'),
+        ),
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Stack(children: <Widget>[
+            Image.asset(
+              'images/maps.jpg',
+              fit: BoxFit.fill,
             ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Text(locationMessage),
-          FlatButton(
-            child: Text('press'),
-            color: Colors.indigo,
-            onPressed: () {
-              getCurrentPosition();
-              Map creds3 = {
-                'adress2': lapti,
-                'adress1': longit,
-              };
-              Provider.of<Adre>(context, listen: false).adresse(creds3: creds3);
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => MapScreen()));
-              print(creds3);
-            },
-          ),
-        ],
-      ),
-    );
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 265.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'Set your current position',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.map_sharp),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 50.0,
+                ),
+                Center(
+                  child: FlatButton(
+                    child: Text('Locate the current position',
+                        style: TextStyle(color: Colors.blue)),
+                    textColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            color: Colors.blue,
+                            width: 1,
+                            style: BorderStyle.solid),
+                        borderRadius: BorderRadius.circular(50)),
+                    color: Colors.black,
+                    onPressed: () {
+                      getCurrentPosition();
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  locationMessage,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
+                ),
+                SizedBox(
+                  height: 40.0,
+                ),
+                FlatButton(
+                  child: Text('View in the maps',
+                      style: TextStyle(color: Colors.white)),
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                          color: Colors.blue,
+                          width: 1,
+                          style: BorderStyle.solid),
+                      borderRadius: BorderRadius.circular(50)),
+                  color: Colors.indigo,
+                  onPressed: () async {
+                    Map creds3 = {
+                      'adress2': lapti,
+                      'adress1': longit,
+                    };
+                    Provider.of<Adre>(context, listen: false)
+                        .adresse(creds3: creds3);
+                    await Provider.of<Adre>(context, listen: false).index();
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => MapScreen()));
+                    print(creds3);
+                  },
+                ),
+              ],
+            ),
+          ]),
+        ));
   }
 }
