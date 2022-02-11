@@ -247,7 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 5,
                         ),
                         Text(
-                          "Normal-User",
+                          "Role: Normal-User",
                           style: TextStyle(
                               color: Colors.white54,
                               fontWeight: FontWeight.bold),
@@ -331,10 +331,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 5,
                         ),
                         Text(
-                          "Wash-Man",
+                          "Role: Wash-Man",
                           style: TextStyle(
-                              color: Colors.white54,
-                              fontWeight: FontWeight.bold),
+                              color: Colors.green, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -407,10 +406,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 5,
                         ),
                         Text(
-                          "Admin",
+                          "Role: Admin",
                           style: TextStyle(
-                              color: Colors.white54,
-                              fontWeight: FontWeight.bold),
+                              color: Colors.red, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),

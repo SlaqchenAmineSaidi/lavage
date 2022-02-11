@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/screens/aboutus.dart';
 import 'package:flutter_laravel/screens/history/Complaing.dart';
 import 'package:flutter_laravel/screens/history/DetailScreen.dart';
 import 'package:flutter_laravel/screens/history/Reviews.dart';
@@ -135,15 +136,6 @@ class _MyHistoryfulWidgetState extends State<MyHistoryfulWidget> {
                     },
                   ),
                   ListTile(
-                    title: Text('My History'),
-                    leading: Icon(Icons.history),
-                    onTap: () async {
-                      await Provider.of<Serv>(context, listen: false).index();
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MyHistoryfulWidget()));
-                    },
-                  ),
-                  ListTile(
                     title: Text('Become Wash-man'),
                     leading: Icon(Icons.wash),
                     onTap: () {
@@ -155,65 +147,8 @@ class _MyHistoryfulWidgetState extends State<MyHistoryfulWidget> {
                     title: Text('Contact us'),
                     leading: Icon(Icons.contact_support),
                     onTap: () {
-                      // Navigator.of(context).push(
-                      //     MaterialPageRoute(builder: (context) => SalonForm()));
-                    },
-                  ),
-                  ListTile(
-                    title: Text('Logout'),
-                    leading: Icon(Icons.logout),
-                    onTap: () {
-                      Provider.of<Auth>(context, listen: false).logout();
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => LoginScreen()));
-                    },
-                  ),
-                ],
-              );
-            } else {
-              return ListView(
-                children: [
-                  DrawerHeader(
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 30,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          auth.user.name,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          auth.user.email,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                    ),
-                  ),
-                  ListTile(
-                    title: Text('Home'),
-                    leading: Icon(Icons.home),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HomeScreen()));
-                    },
-                  ),
-                  ListTile(
-                    title: Text('Contact us'),
-                    leading: Icon(Icons.contact_support),
-                    onTap: () {
-                      // Navigator.of(context).push(
-                      //     MaterialPageRoute(builder: (context) => SalonForm()));
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => AboutUs()));
                     },
                   ),
                   ListTile(

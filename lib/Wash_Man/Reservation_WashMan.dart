@@ -29,25 +29,15 @@ class ReservationClient extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(50),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                IconButton(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Row(
+                            children: [
+                              IconButton(
                                   icon: Icon(
                                     Icons.arrow_back_ios,
                                     color: Colors.white,
@@ -57,29 +47,29 @@ class ReservationClient extends StatelessWidget {
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 HomeScreen()));
-                                  },
+                                  }),
+                              Text(
+                                'Reservations',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30,
+                                    color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: List.generate(Alladresses.length,
+                                    (i) => StylistCard(Alladresses[i]))
+
+                                // StylistCard(salons[0]),
+                                // StylistCard(salons[1]),
+                                // StylistCard(salons[2]),
                                 ),
-                                SizedBox(
-                                  width: 10.0,
-                                ),
-                                Text(
-                                  'Reservations',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 30,
-                                      color: Colors.white),
-                                ),
-                              ],
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: List.generate(Alladresses.length,
-                                      (i) => StylistCard(Alladresses[i]))),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -169,7 +159,6 @@ class StylistCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       width: MediaQuery.of(context).size.width,
-      // height: MediaQuery.of(context).size.height / 3 - 30,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.blue[900],
