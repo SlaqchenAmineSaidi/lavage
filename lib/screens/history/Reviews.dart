@@ -61,7 +61,7 @@ class _ReviewsState extends State<Reviews> {
                           Row(
                             children: <Widget>[
                               Text(
-                                auth.user.name,
+                                "Rating the service",
                                 style: TextStyle(
                                   color: Colors.blue[900],
                                   fontWeight: FontWeight.w600,
@@ -115,9 +115,8 @@ class _ReviewsState extends State<Reviews> {
                             height: 3.0,
                           ),
                           FlatButton(
-                            onPressed: () async {
-                              await Provider.of<Com>(context, listen: false)
-                                  .index();
+                            onPressed: () {
+                              Provider.of<Com>(context, listen: false).index();
                               Map creds4 = {
                                 'rating': _rating,
                                 'comment': _commentController.text,

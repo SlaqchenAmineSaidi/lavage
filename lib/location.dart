@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_laravel/maps.dart';
 import 'package:flutter_laravel/services/adresse.dart';
+import 'package:flutter_laravel/services/service.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +14,7 @@ class location extends StatefulWidget {
 
 var lapti;
 var longit;
+var id = Serv.serviceId;
 
 class _locationState extends State<location> {
   void getCurrentPosition() async {
@@ -111,6 +113,7 @@ class _locationState extends State<location> {
                     Map creds3 = {
                       'adress2': lapti,
                       'adress1': longit,
+                      'service_id': id,
                     };
                     Provider.of<Adre>(context, listen: false)
                         .adresse(creds3: creds3);

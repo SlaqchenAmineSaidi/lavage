@@ -8,6 +8,10 @@ import 'auth.dart';
 class Serv extends ChangeNotifier {
   static List<dynamic> _reservations;
   static List<dynamic> get reservations => _reservations;
+  static List<dynamic> _reservationsAd;
+  static List<dynamic> get reservationsAd => _reservationsAd;
+  static int _ServiceId;
+  static int get serviceId => _ServiceId;
   notifyListeners();
   // static List<dynamic> _price;
   // static List<dynamic> get price => _price;
@@ -18,6 +22,8 @@ class Serv extends ChangeNotifier {
       print(creds2);
       Dio.Response response = await dio().post('/service', data: creds2);
       print(response.data.toString());
+      _ServiceId = response.data['id'];
+      print(_ServiceId);
     } catch (e) {
       print(e);
     }
@@ -30,14 +36,13 @@ class Serv extends ChangeNotifier {
       _reservations = null;
     }
     _reservations = response.data;
-    //print(response.data.toString().length);
-    // _price = List.generate(
-    //     reservations.length, (i) => reservations[i]['service']['price']);
-    // _titles = List.generate(
-    //     reservations.length, (i) => reservations[i]['service']['title']);
-    // List<String> n = _reservations.toString().split(" ");
-    // o = n[3];
-    // g = o.replaceAll(',', '');
-    //print(g);
+  }
+
+  Future<void> index2() async {
+    Dio.Response response = await dio().get('/showall');
+    if (_reservationsAd != null) {
+      _reservationsAd = null;
+    }
+    _reservationsAd = response.data;
   }
 }

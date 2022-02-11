@@ -68,6 +68,17 @@ class Auth extends ChangeNotifier {
     }
   }
 
+  void updatWash(int id) async {
+    try {
+      Dio.Response response = await dio().put(
+        '/updatWash/$id',
+      );
+      print(response.data.toString());
+    } catch (e) {
+      print(e);
+    }
+  }
+
   void tryToken({String token}) async {
     if (token == null) {
       return;
@@ -104,6 +115,15 @@ class Auth extends ChangeNotifier {
           options: Dio.Options(headers: {'Authorization': 'Bearer $_token'}));
 
       cleanUp();
+      notifyListeners();
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void destroy(int id) async {
+    try {
+      Dio.Response response = await dio().delete('/destroy/$id');
       notifyListeners();
     } catch (e) {
       print(e);

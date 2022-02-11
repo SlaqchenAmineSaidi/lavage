@@ -28,7 +28,7 @@ class Comp extends ChangeNotifier {
   }
 
   Future<void> index() async {
-    Dio.Response response = await dio().get('/showComplaints/');
+    Dio.Response response = await dio().get('/showComplains');
     _complains = response.data;
   }
 }

@@ -19,8 +19,8 @@ class _WashMan extends State<WashMan> {
 
   @override
   void initState() {
-    _Washingnamecontroller.text = 'bogsni';
-    _phoneController.text = '0611771354';
+    _Washingnamecontroller.text = 'Zaka_WashMan';
+    _phoneController.text = '0655445566';
 
     super.initState();
   }

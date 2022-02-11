@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_laravel/Admin/admin.dart';
 import 'package:flutter_laravel/Apk_services/Book_services.dart';
 import 'package:flutter_laravel/Apk_services/Wash_services.dart';
 import 'package:flutter_laravel/Apk_services/services.dart';
+import 'package:flutter_laravel/Wash_Man/Reservation_WashMan.dart';
 import 'package:flutter_laravel/screens/aboutus.dart';
 import 'package:flutter_laravel/screens/history/MyHistoryfulWidget.dart';
 import 'package:flutter_laravel/screens/WashMan.dart';
 import 'package:flutter_laravel/screens/login_screen.dart';
+import 'package:flutter_laravel/services/adresse.dart';
 import 'package:flutter_laravel/services/auth.dart';
 import 'package:flutter_laravel/services/comment.dart';
+import 'package:flutter_laravel/services/complain.dart';
 import 'package:flutter_laravel/services/reserver.dart';
 import 'package:flutter_laravel/services/service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -34,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void readToken() async {
     String token = await storage.read(key: 'token');
     Provider.of<Auth>(context, listen: false).tryToken(token: token);
-    print(token);
   }
 
   @override
@@ -240,6 +243,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           auth.user.email,
                           style: TextStyle(color: Colors.white),
                         ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          "Normal-User",
+                          style: TextStyle(
+                              color: Colors.white54,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ],
                     ),
                     decoration: BoxDecoration(
@@ -250,6 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     title: Text('Home'),
                     leading: Icon(Icons.home),
                     onTap: () {
+                      Provider.of<Com>(context, listen: false).index();
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => HomeScreen()));
                     },
@@ -290,7 +303,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               );
-            } else {
+            } else if (Auth.role == 2) {
               return ListView(
                 children: [
                   DrawerHeader(
@@ -314,6 +327,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           auth.user.email,
                           style: TextStyle(color: Colors.white),
                         ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          "Wash-Man",
+                          style: TextStyle(
+                              color: Colors.white54,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ],
                     ),
                     decoration: BoxDecoration(
@@ -329,11 +351,96 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                   ListTile(
-                    title: Text('Contact us'),
+                    title: Text('About us'),
                     leading: Icon(Icons.contact_support),
                     onTap: () {
-                      // Navigator.of(context).push(
-                      //     MaterialPageRoute(builder: (context) => SalonForm()));
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => AboutUs()));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('Reservation of Clients'),
+                    leading: Icon(Icons.book),
+                    onTap: () async {
+                      await Provider.of<Serv>(context, listen: false).index2();
+                      await Provider.of<Adre>(context, listen: false).ShowAll();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ReservationClient()));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('Logout'),
+                    leading: Icon(Icons.logout),
+                    onTap: () {
+                      Provider.of<Auth>(context, listen: false).logout();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LoginScreen()));
+                    },
+                  ),
+                ],
+              );
+            } else if (Auth.role == 0) {
+              return ListView(
+                children: [
+                  DrawerHeader(
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 30,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          auth.user.name,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          auth.user.email,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          "Admin",
+                          style: TextStyle(
+                              color: Colors.white54,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('Home'),
+                    leading: Icon(Icons.home),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => HomeScreen()));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('About us'),
+                    leading: Icon(Icons.contact_support),
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => AboutUs()));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('Complaits of Clients'),
+                    leading: Icon(Icons.book),
+                    onTap: () async {
+                      await Provider.of<Comp>(context, listen: false).index();
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => admin()));
                     },
                   ),
                   ListTile(
@@ -389,7 +496,7 @@ class StylistCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 90,
+                      width: 85,
                     ),
                     Text(
                       "Rating: ",

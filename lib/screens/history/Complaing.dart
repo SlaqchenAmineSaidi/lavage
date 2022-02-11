@@ -61,7 +61,7 @@ class _ComplaingsState extends State<Complaings> {
                           Row(
                             children: <Widget>[
                               Text(
-                                auth.user.name,
+                                "Complaint",
                                 style: TextStyle(
                                     color: Colors.blue[900],
                                     fontWeight: FontWeight.w600,
@@ -120,6 +120,7 @@ class _ComplaingsState extends State<Complaings> {
                               Complaings.id = _washmanController.text;
                               Map creds5 = {
                                 'complain': _complainController.text,
+                                'WashId': Complaings.id
                               };
                               Provider.of<Comp>(context, listen: false)
                                   .complain(creds5: creds5);
