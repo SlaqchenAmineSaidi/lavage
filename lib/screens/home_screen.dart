@@ -268,8 +268,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                   ListTile(
-                    title: Text('My History'),
-                    leading: Icon(Icons.history),
+                    title: Text('History, Rating, Complaint'),
+                    leading: Icon(Icons.multiple_stop),
                     onTap: () async {
                       await Provider.of<Serv>(context, listen: false).index();
                       Navigator.of(context).push(MaterialPageRoute(
